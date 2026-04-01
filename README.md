@@ -1,24 +1,31 @@
-# mertkabak.com.tr
+# macOS Tarzı Portföy Şablonu
 
-Bu proje Ahmet Mert Kabak tarafından geliştirilmiştir.
+Bu proje, macOS / Linux masaüstü hissi taşıyan interaktif bir web portföy şablonudur. İsteyen herkes kendi bilgilerini ekleyerek kişisel portföyü olarak kullanabilir.
 
-## Kurulum
+## 🚀 Projeyi Nereden Gördün?
+Bu şablonu ilk olarak LinkedIn'de paylaştım. Orijinal gönderiye buradan ulaşabilir ve destek olmak için beğenebilirsin:
+👉 [LinkedIn Gönderim İçin Tıklayın](#LINKEDIN_POST_LINKINIZI_BURAYA_EKLEYIN)
 
-\\\ash
+## 📥 Kurulum & Kullanım
+
+Projeyi kendi ortamınızda çalıştırmak veya GitHub Pages / Vercel / Netlify üzerinde yayınlamak çok basittir:
+
+```bash
 # Projeyi klonlayın
-git clone https://github.com/ahmetmertkabak/mertkabak.com.tr.git
+git clone https://github.com/ahmetmertkabak/portfolio-macos.git
 
 # Proje dizinine girin
-cd mertkabak.com.tr
+cd portfolio-macos
+```
 
-# Bağımlılıkları yükleyin (varsa)
-# npm install veya pip install -r requirements.txt
-\\\
+İçerisindeki `index.html` ve `static/js/main.js` dosyalarında yer alan bilgileri (isim, sosyal medya linkleri, projeler, resimler vb.) kendi bilgilerinize göre düzenleyebilirsiniz. Ek bir bağımlılık (npm vb.) gerektirmez. Doğrudan tarayıcıda çalıştırabilirsiniz.
 
-## Kullanım
+## 📝 Düzenleme Rehberi
 
-Proje detayları ve kullanım talimatları eklenecek.
+- **Profil ve Hakkımda Bilgileri:** `index.html` içindeki "Ad Soyad", "Geliştirici" vb. metinleri bulun ve değiştirin.
+- **Projeler Listesi:** `static/js/main.js` içinde `const projects = [...]` dizisini düzenleyerek kendi projelerinizi ekleyin.
+- **Görseller:** Kendi profil fotoğrafınızı ve projelerinizin ekran görüntülerini `static/img/` klasörüne eklemeyi unutmayın.
+- **CV:** `static/cv/` klasöründeki dosyayı kendi CV'niz ile değiştirin.
 
-## Lisans
-
-Bu proje özel bir projedir.
+## 📄 Lisans
+MIT License - Dilediğiniz gibi kullanıp geliştirmekte özgürsünüz!

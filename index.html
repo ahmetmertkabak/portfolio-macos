@@ -2,4122 +2,884 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Ahmet Mert Kabak - Kişisel Website</title>
-    
-    <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <style>
-        /* Modern Pro Theme Variables */
-        :root {
-            --bg-color: #050505;
-            --card-bg: #121212;
-            --card-border: #333333;
-            --text-primary: #ffffff; /* Pure white for better readability */
-            --text-secondary: #d1d5db; /* Lighter gray for better contrast */
-            --accent-color: #60a5fa; /* Brighter Blue */
-            --accent-glow: rgba(96, 165, 250, 0.2);
-            --success-color: #4ade80;
-            --gradient-1: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-            --font-main: 'Inter', sans-serif;
-            --font-code: 'JetBrains Mono', monospace;
-        }
-
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-main);
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-color);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Refined Scroll Bar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            background: var(--bg-color);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #444;
-        }
-
-        /* Minimal Loading Screen */
-        #loading-screen {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loader {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--card-border);
-            border-top: 3px solid var(--text-primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Minimal Scroll to Top */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 45px;
-            height: 45px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            color: var(--text-primary);
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .scroll-to-top:hover {
-            border-color: var(--text-secondary);
-            transform: translateY(-3px);
-        }
-
-        /* Modern Navbar */
-        .navbar {
-            background: rgba(3, 3, 3, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--card-border);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            z-index: 1100;
-        }
-
-        .navbar-brand {
-            color: var(--text-primary) !important;
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem !important;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--text-primary) !important;
-        }
-
-        .navbar-toggler {
-            border: none;
-            padding: 0.5rem;
-            border-radius: 8px;
-            background: transparent;
-        }
-        
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg>");
-        }
-
-       /* Hero Section */
-.hero-section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: var(--bg-color);
-    padding: 100px 0;
-}
-
-/* Modern Grid Background */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Subtle Glow */
-.hero-section::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-    filter: blur(60px);
-    pointer-events: none;
-    z-index: 0;
-}
-
-#particles-js {
-    display: none;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 10;
-    padding: 2rem;
-    pointer-events: auto;
-    animation: fadeInUp 1s ease;
-    max-width: 800px;
-}
-
-.hero-content * {
-    pointer-events: auto;
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.2rem;
-    background: rgba(79,70,229,0.2);
-    border: 1px solid rgba(79,70,229,0.3);
-    border-radius: 50px;
-    color: var(--secondary-color);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.hero-badge:hover {
-    background: rgba(79,70,229,0.3);
-    border-color: rgba(79,70,229,0.5);
-    transform: translateY(-2px);
-}
-
-.hero-badge i {
-    font-size: 1rem;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.6;
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            letter-spacing: -1px;
-            line-height: 1.1;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% {
-                background-position: 0% center;
-            }
-            50% {
-                background-position: 100% center;
-            }
-        }
-
-        @keyframes expandLine {
-            to {
-                transform: scaleX(1);
-            }
-        }
-
-.hero-subtitle {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: var(--secondary-color);
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 0.5s;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.hero-subtitle::before {
-    content: '';
-    width: 60px;
-    height: 3px;
-    background: var(--gradient-1);
-    border-radius: 2px;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 0.7s;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-.hero-text {
-    font-size: 1.3rem;
-    max-width: 650px;
-    margin-bottom: 3rem;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.9;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 0.8s;
-}
-
-.hero-cta {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 1s;
-    position: relative;
-    z-index: 100;
-}
-
-.hero-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 100;
-    cursor: pointer;
-}
-
-.hero-btn-primary {
-    background: var(--gradient-1);
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(79,70,229,0.3);
-}
-
-.hero-btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(79,70,229,0.4);
-}
-
-.hero-btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.hero-btn-primary:hover::before {
-    left: 100%;
-}
-
-.hero-btn-secondary {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
-}
-
-.hero-btn-secondary:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.3);
-    transform: translateY(-3px);
-}
-
-.hero-social {
-    display: flex;
-    gap: 1rem;
-    margin-top: 3rem;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 1.2s;
-    position: relative;
-    z-index: 100;
-}
-
-.hero-social-link {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
-    font-size: 1.3rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-        .hero-social-link:hover {
-            background: var(--gradient-1);
-            border-color: transparent;
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(79,70,229,0.3);
-        }
-
-        /* Pro Badge */
-        .hero-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-badge i {
-            color: var(--accent-color);
-        }
-
-        .hero-scroll {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255,255,255,0.6);
-    font-size: 0.9rem;
-    z-index: 100;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-    animation-delay: 1.5s;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    pointer-events: auto;
-}
-
-.hero-scroll:hover {
-    color: var(--secondary-color);
-    transform: translateX(-50%) translateY(-5px);
-}
-
-.hero-scroll i {
-    font-size: 1.5rem;
-    animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
-}
-
-/* Hero Visual - Sağ Taraf */
-.hero-visual {
-    position: relative;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.floating-card {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    animation: floatCard 6s ease-in-out infinite;
-    position: relative;
-    z-index: 10;
-}
-
-@keyframes floatCard {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(2deg);
-    }
-}
-
-.code-snippet {
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.9);
-}
-
-.code-line {
-    margin-bottom: 0.3rem;
-}
-
-.code-line.indent {
-    padding-left: 1.5rem;
-}
-
-.code-line.indent-2 {
-    padding-left: 3rem;
-}
-
-.code-keyword {
-    color: #c792ea; /* Keep generic purple or change to var */
-}
-
-.code-variable {
-    color: #82aaff;
-}
-
-.code-property {
-    color: var(--accent-color); /* Use the main accent for properties */
-}
-
-.code-string {
-    color: var(--success-color); /* Use success green for strings */
-}
-
-.floating-icons {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-}
-
-.floating-icon {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: rgba(79,70,229,0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(79,70,229,0.3);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: var(--secondary-color);
-    animation: floatIcon 4s ease-in-out infinite;
-    animation-delay: var(--delay);
-}
-
-.floating-icon:nth-child(1) {
-    top: 10%;
-    left: 10%;
-}
-
-.floating-icon:nth-child(2) {
-    top: 20%;
-    right: 15%;
-}
-
-.floating-icon:nth-child(3) {
-    bottom: 30%;
-    left: 5%;
-}
-
-.floating-icon:nth-child(4) {
-    bottom: 15%;
-    right: 10%;
-}
-
-@keyframes floatIcon {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translateY(-30px) scale(1.1);
-        opacity: 1;
-    }
-}
-
-        /* About Section Styles */
-        .about-section {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            padding: 8rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 80% 20%, rgba(79,70,229,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(129,140,248,0.08) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .about-section .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            text-align: center;
-            background: linear-gradient(45deg, #fff, var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 30px rgba(129,140,248,0.3);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 4px;
-            background: var(--gradient-1);
-            border-radius: 2px;
-        }
-
-        .profile-container {
-            position: relative;
-            max-width: 400px;
-            margin: 0 auto;
-            perspective: 1000px;
-        }
-
-        .profile-wrapper {
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease;
-        }
-
-        .profile-wrapper:hover {
-            transform: rotateY(10deg) rotateX(5deg);
-        }
-
-        .profile-img {
-            width: 100%;
-            height: auto;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            transition: all 0.5s ease;
-        }
-
-        .profile-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-1);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            opacity: 0.3;
-            transform: translateZ(-10px);
-        }
-
-        .about-content {
-            padding: 3rem;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .about-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: rgba(79,70,229,0.3);
-        }
-                .about-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #fff, var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            display: inline-block;
-        }
-
-        .about-text {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            text-align: justify;
-        }
-
-        .education-item {
-            margin-bottom: 2rem;
-            padding-left: 2rem;
-            border-left: 4px solid var(--primary-color);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .education-item:hover {
-            transform: translateX(10px);
-        }
-
-        .education-item::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .education-item:hover::before {
-            transform: scale(1.2);
-            box-shadow: 0 0 15px var(--primary-color);
-        }
-
-        .education-year {
-            color: var(--secondary-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-degree {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-school {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.1rem;
-        }
-
-        .interests-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .interest-item {
-            background: var(--gradient-1);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            color: white;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .interest-item i {
-            font-size: 1.2rem;
-        }
-
-        .interest-item:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 5px 15px rgba(79,70,229,0.3);
-        }
-
-        /* Skills Section */
-        .skills-section {
-            background: var(--bg-color);
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .skill-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-        }
-
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
-
-        .skill-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-badge {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--card-border);
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-badge:hover {
-            background: rgba(59, 130, 246, 0.1);
-            border-color: var(--accent-color);
-            color: var(--text-primary);
-        }
-        
-        .skill-badge i {
-            font-size: 1rem;
-        }
-
-        /* Contact Section Enhanced Styles */
-        .contact-section {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-            padding: 8rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 3rem;
-            height: 100%;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: rgba(79,70,229,0.3);
-        }
-
-        .contact-card h3 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #fff;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .contact-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--gradient-1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover h3::after {
-            width: 100px;
-        }
-
-        .contact-info {
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            padding: 1rem;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.05);
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .contact-item i {
-            font-size: 2rem;
-            margin-right: 1.5rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover i {
-            transform: scale(1.2);
-        }
-
-        .contact-item p {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
-            margin: 0;
-        }
-                /* Enhanced Contact Form Styles */
-        .contact-form {
-            margin-top: 2rem;
-        }
-
-        .form-control {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 1rem;
-            color: #fff !important;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            color: #fff !important;
-        }
-        
-        .contact-form input[type="text"]::placeholder,
-        .contact-form input[type="email"]::placeholder,
-        .contact-form textarea::placeholder {
-            color: rgba(255,255,255,0.6) !important;
-        }
-
-        .form-control:focus {
-            background: rgba(255,255,255,0.1);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(79,70,229,0.3);
-            outline: none;
-        }
-
-        .form-control::placeholder {
-            color: rgba(255,255,255,0.6);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .contact-btn {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background: var(--gradient-1);
-            border: none;
-            border-radius: 10px;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(255,255,255,0.3),
-                transparent
-            );
-            transition: all 0.5s ease;
-        }
-
-        .contact-btn:hover::before {
-            left: 100%;
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(79,70,229,0.3);
-        }
-
-        /* Enhanced Social Links in Contact Section */
-        .contact-social-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-social-btn {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.2);
-            color: #fff;
-            font-size: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-social-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(255,255,255,0.3),
-                transparent
-            );
-            transition: all 0.5s ease;
-        }
-
-        .contact-social-btn:hover::before {
-            left: 100%;
-        }
-
-        .contact-social-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            background: var(--gradient-1);
-            border-color: transparent;
-            box-shadow: 0 10px 20px rgba(79,70,229,0.3);
-        }
-
-        .contact-social-btn i {
-            transition: all 0.3s ease;
-        }
-
-        .contact-social-btn:hover i {
-            transform: scale(1.2);
-        }
-
-       
-
-        /* Enhanced Footer Styles */
-        .footer {
-            background: rgba(30, 27, 75, 0.95);
-            padding: 2rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(
-                to right,
-                transparent,
-                var(--primary-color),
-                transparent
-            );
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.8);
-            margin: 0;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
-        }
-                /* Stats Section */
-        .stats-section {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-            padding: 5rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                rgba(79,70,229,0.05), 
-                rgba(129,140,248,0.05));
-            pointer-events: none;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                rgba(79,70,229,0.1), 
-                rgba(129,140,248,0.1));
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover::before {
-            opacity: 1;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: var(--primary-color);
-        }
-
-        .stat-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-card:hover .stat-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .stat-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, #fff, var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-        }
-
-        .stat-label {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        /* Quick Actions (inside About Section) */
-        .about-section .quick-actions-grid {
-            margin-top: 4rem;
-        }
-
-        .quick-actions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .quick-action-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: block;
-        }
-
-        .quick-action-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255,255,255,0.1), 
-                transparent);
-            transition: all 0.5s ease;
-        }
-
-        .quick-action-card:hover::before {
-            left: 100%;
-        }
-
-        .quick-action-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border-color: var(--primary-color);
-            background: rgba(255,255,255,0.08);
-        }
-
-        .action-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.3s ease;
-        }
-
-        .quick-action-card:hover .action-icon {
-            transform: scale(1.15) rotate(-5deg);
-        }
-
-        .quick-action-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-
-        .quick-action-card:hover h3 {
-            color: var(--secondary-color);
-        }
-
-        .quick-action-card p {
-            color: rgba(255,255,255,0.7);
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .action-arrow {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            color: #fff;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .quick-action-card:hover .action-arrow {
-            transform: translateX(10px) scale(1.1);
-            box-shadow: 0 5px 15px rgba(79,70,229,0.3);
-        }
-
-        /* CV Section */
-        .cv-section {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-            padding: 5rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cv-download-container {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .cv-download-btn,
-        .cv-view-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1rem 2.5rem;
-            background: var(--gradient-1);
-            border-radius: 15px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(79,70,229,0.3);
-        }
-
-        .cv-view-btn {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .cv-download-btn:hover,
-        .cv-view-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(79,70,229,0.4);
-        }
-
-        .cv-view-btn:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--primary-color);
-        }
-
-        .cv-content {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 3rem;
-        }
-
-        .cv-section-block {
-            margin-bottom: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .cv-section-block:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .cv-block-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .cv-block-title i {
-            color: var(--secondary-color);
-            font-size: 1.8rem;
-        }
-
-        .cv-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .cv-info-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            padding: 1rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .cv-label {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .cv-value {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .cv-value a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .cv-value a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        .cv-timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .cv-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--gradient-1);
-            border-radius: 2px;
-        }
-
-        .cv-timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
-            padding-left: 2rem;
-        }
-
-        .cv-timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.5rem;
-            top: 0.5rem;
-            width: 15px;
-            height: 15px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            border: 3px solid var(--dark-color);
-            box-shadow: 0 0 0 3px var(--primary-color);
-        }
-
-        .cv-timeline-year {
-            color: var(--secondary-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-timeline-content h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-timeline-org {
-            color: rgba(255,255,255,0.8);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.8rem;
-        }
-
-        .cv-timeline-desc {
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
-
-        .cv-skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .cv-skill-category {
-            background: rgba(255,255,255,0.05);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .cv-skill-category h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        .cv-skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .cv-skill-tag {
-            padding: 0.5rem 1rem;
-            background: var(--gradient-1);
-            border-radius: 20px;
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .cv-projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .cv-project-item {
-            background: rgba(255,255,255,0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .cv-project-item:hover {
-            transform: translateX(10px);
-            border-color: var(--primary-color);
-        }
-
-        .cv-project-item h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 1rem;
-        }
-
-        .cv-project-item p {
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .cv-project-date {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        .cv-project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .cv-project-tech span {
-            padding: 0.4rem 0.8rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            color: rgba(255,255,255,0.9);
-            font-size: 0.85rem;
-        }
-
-        .cv-certificates-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .cv-cert-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .cv-cert-item i {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-        }
-
-        .cv-cert-item h4 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.3rem;
-        }
-
-        .cv-cert-item p {
-            color: rgba(255,255,255,0.7);
-            margin: 0;
-        }
-
-        .cv-languages {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .cv-lang-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .cv-lang-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .cv-lang-level {
-            color: var(--secondary-color);
-            font-weight: 500;
-        }
-
-        /* Projects Section */
-        .projects-section {
-            background: var(--bg-color);
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .projects-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .filter-btn {
-            padding: 0.6rem 1.5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .filter-btn:hover {
-            border-color: var(--text-primary);
-            color: var(--text-primary);
-        }
-
-        .filter-btn.active {
-            background: var(--text-primary);
-            border-color: var(--text-primary);
-            color: var(--bg-color);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card * {
-            pointer-events: none;
-        }
-
-        .project-card a,
-        .project-card button {
-            pointer-events: auto;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
-        }
-
-        .project-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(79,70,229,0.8), rgba(129,140,248,0.6));
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-
-        .project-card:hover .project-image::before {
-            opacity: 1;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-image .project-icon {
-            position: absolute;
-            z-index: 3;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-image .project-icon {
-            transform: scale(1.2);
-            opacity: 0.9;
-        }
-
-        .project-image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: all 0.3s ease;
-            z-index: 3;
-        }
-
-        .project-card:hover .project-image-overlay {
-            transform: translateY(0);
-        }
-
-        .project-image-overlay-text {
-            color: #fff;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .project-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-category {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: var(--gradient-1);
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .project-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #fff;
-            line-height: 1.3;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            font-size: 1.05rem; /* Slightly larger */
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-clamp: 4;
-            font-weight: 400; /* Regular weight instead of light */
-        }
-
-        .project-card:hover .project-description {
-            -webkit-line-clamp: 6;
-            line-clamp: 6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.95);
-            border: 1px solid rgba(255,255,255,0.15);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .tech-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .tech-tag i {
-            font-size: 1.1rem;
-            filter: drop-shadow(0 0 3px currentColor);
-        }
-
-        /* Technology specific colors */
-        .tech-tag[data-tech="Next.js"] i,
-        .tech-tag[data-tech="React"] i,
-        .tech-tag[data-tech="React Native"] i {
-            color: #61dafb;
-        }
-
-        .tech-tag[data-tech="Python"] i {
-            color: #3776ab;
-        }
-
-        .tech-tag[data-tech="JavaScript"] i,
-        .tech-tag[data-tech="TypeScript"] i {
-            color: #f7df1e;
-        }
-
-        .tech-tag[data-tech="Node.js"] i {
-            color: #339933;
-        }
-
-        .tech-tag[data-tech="Supabase"] i,
-        .tech-tag[data-tech="PostgreSQL"] i,
-        .tech-tag[data-tech="MySQL"] i,
-        .tech-tag[data-tech="Database"] i {
-            color: #3ecf8e;
-        }
-
-        .tech-tag[data-tech="Docker"] i {
-            color: #2496ed;
-        }
-
-        .tech-tag[data-tech="Flask"] i {
-            color: #ffffff;
-            background: linear-gradient(135deg, #000000, #333333);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tech-tag[data-tech=".NET Core"] i,
-        .tech-tag[data-tech="C#"] i {
-            color: #512bd4;
-        }
-
-        .tech-tag[data-tech="Java"] i {
-            color: #ed8b00;
-        }
-
-        .tech-tag[data-tech="Machine Learning"] i,
-        .tech-tag[data-tech="MLPRegressor"] i,
-        .tech-tag[data-tech="AI/LLM"] i,
-        .tech-tag[data-tech="LLM"] i,
-        .tech-tag[data-tech="AI Integration"] i {
-            color: #ff6b6b;
-        }
-
-        .tech-tag[data-tech="Raspberry Pi 4"] i,
-        .tech-tag[data-tech="Arduino Uno"] i {
-            color: #c51a4a;
-        }
-
-        .tech-tag[data-tech="RC522 RFID"] i,
-        .tech-tag[data-tech="IoT"] i {
-            color: #00d4ff;
-        }
-
-        .tech-tag[data-tech="Mapbox"] i {
-            color: #4264fb;
-        }
-
-        .tech-tag[data-tech="Tailwind CSS"] i {
-            color: #06b6d4;
-        }
-
-        .tech-tag[data-tech="Git/GitHub"] i {
-            color: #f05032;
-        }
-
-        .tech-tag[data-tech="Cloudflare Tunnel"] i,
-        .tech-tag[data-tech="Cloud"] i {
-            color: #f38020;
-        }
-
-        .tech-tag[data-tech="Real-time"] i,
-        .tech-tag[data-tech="WebSocket"] i {
-            color: #00d9ff;
-        }
-
-        .tech-tag[data-tech="Scikit-learn"] i {
-            color: #f7931e;
-        }
-
-        .tech-tag[data-tech="Gemini API"] i {
-            color: #4285f4;
-        }
-
-        .project-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: auto;
-        }
-
-        .project-stats {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            flex-wrap: wrap;
-        }
-
-        .project-stat-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .project-stat-item i {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-        }
-
-        .project-footer-actions {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            background: rgba(79,70,229,0.1);
-            border: 1px solid rgba(79,70,229,0.2);
-            font-size: 0.9rem;
-        }
-
-        .project-link:hover {
-            color: #fff;
-            transform: translateX(3px);
-            background: rgba(79,70,229,0.25);
-            border-color: rgba(79,70,229,0.4);
-        }
-
-        .project-link-demo {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #4ade80;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            background: rgba(74,222,128,0.1);
-            border: 1px solid rgba(74,222,128,0.2);
-            font-size: 0.9rem;
-        }
-
-        .project-link-demo:hover {
-            color: #fff;
-            background: rgba(74,222,128,0.25);
-            border-color: rgba(74,222,128,0.4);
-            transform: translateY(-2px);
-        }
-
-        .project-link-demo i {
-            font-size: 0.9rem;
-        }
-
-        .project-link i {
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover i {
-            transform: translateX(3px);
-        }
-
-        /* Image Lightbox */
-        .image-lightbox {
-            display: none;
-            position: fixed;
-            z-index: 3000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .image-lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            color: #fff;
-            font-size: 2.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(255,255,255,0.1);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255,255,255,0.2);
-            transform: rotate(90deg);
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .lightbox-nav:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .lightbox-prev {
-            left: -70px;
-        }
-
-        .lightbox-next {
-            right: -70px;
-        }
-
-        @media (max-width: 768px) {
-            .lightbox-prev {
-                left: 10px;
-            }
-            .lightbox-next {
-                right: 10px;
-            }
-        }
-
-        /* Project Modal */
-        .project-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease;
-        }
-
-        .project-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            margin: 2rem auto;
-            padding: 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            color: rgba(255,255,255,0.8);
-            font-size: 2.5rem;
-            font-weight: 300;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .modal-close:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.2);
-            transform: rotate(90deg);
-        }
-
-        .modal-body {
-            padding: 3rem;
-        }
-
-        .modal-header {
-            margin-bottom: 2rem;
-        }
-
-        .modal-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .modal-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .modal-tag {
-            padding: 0.4rem 1rem;
-            background: var(--gradient-1);
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .modal-image-container {
-            width: 100%;
-            min-height: 500px;
-            max-height: 600px;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal-image-container:hover {
-            box-shadow: 0 10px 30px rgba(79,70,229,0.4);
-        }
-
-        .modal-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .modal-image-container:hover img {
-            transform: scale(1.05);
-        }
-
-        .project-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-        }
-
-
-        /* Image Slider for Multiple Images */
-        .modal-image-slider {
-            position: relative;
-            width: 100%;
-            min-height: 400px;
-            max-height: 600px;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            background: rgba(0,0,0,0.3);
-        }
-
-        .slider-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        .slider-wrapper {
-            display: flex;
-            transition: transform 0.5s ease;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slider-slide {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slider-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            max-height: 600px;
-        }
-
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 10;
-            font-size: 1.2rem;
-        }
-
-        .slider-nav:hover {
-            background: rgba(79,70,229,0.8);
-            border-color: rgba(79,70,229,0.5);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .slider-prev {
-            left: 1rem;
-        }
-
-        .slider-next {
-            right: 1rem;
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            border: 2px solid rgba(255,255,255,0.6);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slider-dot.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            transform: scale(1.2);
-        }
-
-        .slider-counter {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            z-index: 10;
-        }
-
-        .modal-details {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .modal-section {
-            background: rgba(255,255,255,0.05);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .modal-section h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .modal-section h3 i {
-            color: var(--secondary-color);
-        }
-
-        .modal-section p {
-            color: rgba(255,255,255,0.9);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .tech-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .tech-item {
-            padding: 0.6rem 1.2rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.9);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .tech-item i {
-            color: var(--secondary-color);
-        }
-
-        .features-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .features-list li {
-            padding: 0.8rem 0;
-            color: rgba(255,255,255,0.9);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .features-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .project-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .project-link-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: var(--gradient-1);
-            border-radius: 10px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .project-link-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(79,70,229,0.3);
-        }
-
-        .project-link-btn i {
-            font-size: 1.2rem;
-        }
-
-        /* Enhanced Responsive Design */
-        @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 4rem;
-            }
-            .hero-subtitle {
-                font-size: 2rem;
-            }
-            .hero-cta {
-                flex-direction: column;
-            }
-            .hero-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .contact-social-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 991px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            .hero-subtitle {
-                font-size: 1.8rem;
-            }
-            .hero-badge {
-                font-size: 0.85rem;
-                padding: 0.5rem 1rem;
-            }
-            .section-title {
-                font-size: 2.5rem;
-            }
-            .about-title {
-                font-size: 2rem;
-            }
-            .skill-card {
-                margin-bottom: 2rem;
-            }
-            .contact-card {
-                margin-bottom: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            .hero-subtitle {
-                font-size: 1.5rem;
-            }
-            .hero-text {
-                font-size: 1.1rem;
-            }
-            .hero-btn {
-                padding: 0.9rem 2rem;
-                font-size: 1rem;
-            }
-            .hero-social-link {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-            .hero-visual {
-                display: none;
-            }
-            .floating-card {
-                padding: 1.5rem;
-            }
-            .code-snippet {
-                font-size: 0.8rem;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-            .profile-container {
-                margin-bottom: 3rem;
-            }
-            .social-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            .contact-social-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.6rem;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .projects-filter {
-                gap: 0.5rem;
-            }
-            .filter-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-            .modal-content {
-                width: 95%;
-                margin: 1rem auto;
-            }
-            .modal-body {
-                padding: 2rem 1.5rem;
-            }
-            .modal-header h2 {
-                font-size: 2rem;
-            }
-            .modal-image-container {
-                min-height: 250px;
-            }
-            .modal-image-slider {
-                min-height: 300px;
-                max-height: 400px;
-            }
-            .slider-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            .slider-counter {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .project-image-wrapper {
-                height: 250px !important;
-            }
-            .project-stats {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .project-footer-actions {
-                flex-direction: column;
-                width: 100%;
-            }
-            .project-link,
-            .project-link-demo {
-                width: 100%;
-                justify-content: center;
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            .cv-content {
-                padding: 2rem;
-            }
-            .cv-info-grid {
-                grid-template-columns: 1fr;
-            }
-            .cv-skills-grid {
-                grid-template-columns: 1fr;
-            }
-            .cv-download-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .cv-download-btn,
-            .cv-view-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-            .stat-card {
-                padding: 2rem;
-            }
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            .stat-icon {
-                font-size: 2.5rem;
-            }
-            .quick-actions-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            .about-section .quick-actions-grid {
-                margin-top: 3rem;
-            }
-            .quick-action-card {
-                padding: 2rem;
-            }
-            .action-icon {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .about-content {
-                padding: 2rem;
-            }
-            .skill-card {
-                padding: 2rem;
-            }
-            .contact-card {
-                padding: 2rem;
-            }
-            .love-button {
-                width: 60px;
-                height: 60px;
-                bottom: 20px;
-                right: 20px;
-            }
-            .love-button i {
-                font-size: 1.8rem;
-            }
-            .contact-item i {
-                font-size: 1.8rem;
-            }
-            .contact-item p {
-                font-size: 1rem;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .stat-card {
-                padding: 1.5rem;
-            }
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            .stat-icon {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-            }
-            .quick-actions-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .quick-action-card {
-                padding: 1.5rem;
-            }
-            .action-icon {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-            }
-            .quick-action-card h3 {
-                font-size: 1.5rem;
-            }
-            .cv-content {
-                padding: 1.5rem;
-            }
-            .cv-block-title {
-                font-size: 1.5rem;
-            }
-            .cv-timeline {
-                padding-left: 1.5rem;
-            }
-            .cv-timeline-item {
-                padding-left: 1.5rem;
-            }
-            .cv-timeline-item::before {
-                left: -1.75rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            .social-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-            .contact-social-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.4rem;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Geliştirici için Linux ve masaüstü hissi taşıyan Türkçe portföy deneyimi."
+    >
+    <title>Geliştirici | Portfolio Desktop</title>
+    <link rel="icon" type="image/x-icon" href="static/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+    <link rel="stylesheet" href="static/css/style.css?v=20260328-11">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader"></div>
+    <div class="boot-screen" id="bootScreen" aria-hidden="false">
+        <div class="boot-screen__content">
+            <div class="boot-screen__logo">
+                <i class="fa-brands fa-ubuntu"></i>
+            </div>
+            <div class="boot-screen__meta">
+                <span class="boot-screen__status" id="bootStatus">Başlangıç ekranı hazırlanıyor</span>
+                <span class="boot-screen__score">
+                    Skor
+                    <strong id="bootScore">000</strong>
+                </span>
+            </div>
+            <h1>Portfolio Desktop</h1>
+            <p id="bootHint">Portföy masaüstü hazırlanıyor. Sistem açılırken küçük dino oyununu da deneyebilirsin.</p>
+            <div class="boot-screen__progress" aria-hidden="true">
+                <span></span>
+            </div>
+            <div class="boot-game" id="bootGame" aria-label="Dino zıplama mini oyunu">
+                <div class="boot-game__sky" aria-hidden="true">
+                    <span class="boot-game__sun"></span>
+                    <span class="boot-game__cloud boot-game__cloud--one"></span>
+                    <span class="boot-game__cloud boot-game__cloud--two"></span>
+                </div>
+                <div class="boot-game__track"></div>
+                <div class="boot-game__runner" id="bootRunner" aria-hidden="true">
+                    <span class="boot-game__runner-body"></span>
+                    <span class="boot-game__runner-head"></span>
+                    <span class="boot-game__runner-eye"></span>
+                    <span class="boot-game__runner-tail"></span>
+                    <span class="boot-game__runner-leg boot-game__runner-leg--front"></span>
+                    <span class="boot-game__runner-leg boot-game__runner-leg--back"></span>
+                </div>
+                <div class="boot-game__obstacle" id="bootObstacle" aria-hidden="true">
+                    <span class="boot-game__cactus boot-game__cactus--main"></span>
+                    <span class="boot-game__cactus boot-game__cactus--arm"></span>
+                    <span class="boot-game__cactus boot-game__cactus--side"></span>
+                </div>
+                <p class="boot-game__flash" id="bootGameFlash" aria-live="polite">Yükleniyor...</p>
+            </div>
+            <button class="boot-screen__skip" id="bootSkip" type="button">Masaüstüne Geç</button>
+        </div>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Ahmet Mert Kabak</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Ana Sayfa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">Hakkımda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Yetenekler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projeler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#cv">CV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">İletişim</a>
-                    </li>
-                </ul>
+    <div class="desktop-root">
+        <header class="top-panel">
+            <div class="top-panel__left">
+                <span class="ubuntu-mark">
+                    <i class="fa-brands fa-ubuntu"></i>
+                </span>
+                <span>Etkinlikler</span>
             </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div id="particles-js"></div>
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6 col-md-10" data-aos="fade-up">
-                    <div class="hero-content" style="padding-top: 2rem;">
-                        <span class="hero-badge">
-                            <i class="fas fa-code-branch"></i>
-                            Computer Engineering Student
+            <div class="top-panel__center" id="panelTitle">Portfolio Desktop - Masaüstü</div>
+
+            <div class="top-panel__right">
+                <div class="panel-icons" aria-hidden="true">
+                    <i class="fa-solid fa-wifi"></i>
+                    <i class="fa-solid fa-volume-high"></i>
+                    <i class="fa-solid fa-battery-three-quarters"></i>
+                </div>
+                <span class="locale-pill">TR</span>
+                <time id="desktopClock" datetime=""></time>
+            </div>
+        </header>
+
+        <div class="desktop-shell">
+            <aside class="dock" aria-label="Uygulama dock">
+                <button
+                    class="dock-app"
+                    data-app-target="browser"
+                    data-dock-label="Tarayıcı"
+                    data-window-title="Tarayıcı - Başlangıç Sayfası"
+                    type="button"
+                    aria-label="Tarayıcı penceresini aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--browser">
+                        <i class="fa-brands fa-chrome"></i>
+                    </span>
+                    <span class="dock-app__dot"></span>
+                </button>
+                <button
+                    class="dock-app"
+                    data-app-target="projects"
+                    data-dock-label="Projeler"
+                    data-window-title="Dosyalar - Projeler"
+                    type="button"
+                    aria-label="Projeler penceresini aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--folder">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </span>
+                    <span class="dock-app__dot"></span>
+                </button>
+                <button
+                    class="dock-app"
+                    data-app-target="about"
+                    data-dock-label="Hakkımda"
+                    data-window-title="Dosyalar - Hakkımda"
+                    type="button"
+                    aria-label="Hakkımda penceresini aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--home">
+                        <i class="fa-solid fa-house"></i>
+                    </span>
+                    <span class="dock-app__dot"></span>
+                </button>
+                <button
+                    class="dock-app"
+                    data-app-target="skills"
+                    data-dock-label="Terminal"
+                    data-window-title="Terminal - Uzmanlık"
+                    type="button"
+                    aria-label="Uzmanlık terminalini aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--terminal">
+                        <i class="fa-solid fa-terminal"></i>
+                    </span>
+                    <span class="dock-app__dot"></span>
+                </button>
+                <button
+                    class="dock-app"
+                    data-app-target="cv"
+                    data-dock-label="CV"
+                    data-window-title="Belge Görüntüleyici - CV"
+                    type="button"
+                    aria-label="CV penceresini aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--doc">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </span>
+                    <span class="dock-app__dot"></span>
+                </button>
+                <button
+                    class="dock-app"
+                    data-app-target="contact"
+                    data-dock-label="İletişim"
+                    data-window-title="Posta - Yeni Mesaj"
+                    type="button"
+                    aria-label="İletişim penceresini aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--mail">
+                        <i class="fa-solid fa-envelope"></i>
+                    </span>
+                    <span class="dock-app__dot"></span>
+                </button>
+                <button
+                    class="dock-app"
+                    data-app-target="trash"
+                    data-dock-label="Çöp Kutusu"
+                    data-window-title="Çöp Kutusu"
+                    type="button"
+                    aria-label="Çöp kutusunu aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--trash">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                    <span class="dock-app__dot"></span>
+                </button>
+                <a
+                    class="dock-app dock-app--external"
+                    data-dock-label="GitHub"
+                    href="https://github.com/KULLANICI_ADINIZ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub profilini aç"
+                >
+                    <span class="dock-app__icon dock-app__icon--github">
+                        <i class="fa-brands fa-github"></i>
+                    </span>
+                </a>
+            </aside>
+
+            <main class="workspace" id="workspace">
+                <div class="wallpaper-orb wallpaper-orb--one"></div>
+                <div class="wallpaper-orb wallpaper-orb--two"></div>
+                <div class="wallpaper-noise"></div>
+
+                <section class="desktop-icons" aria-label="Masaüstü kısayolları">
+                    <button class="desktop-icon" data-app-target="browser" data-window-title="Tarayıcı - Başlangıç Sayfası" type="button">
+                        <span class="desktop-icon__art desktop-icon__art--browser">
+                            <i class="fa-brands fa-chrome"></i>
                         </span>
-                        <h1 class="hero-title">Building Scalable Systems & <br>Distributed Architectures</h1>
-                        <p class="hero-text">
-                            Ben <strong>Ahmet Mert Kabak</strong>. Backend mimarileri, dağıtık sistemler ve modern web teknolojileri üzerine odaklanan bir bilgisayar mühendisliği öğrencisiyim. 
-                            IoT'den SaaS platformlarına kadar gerçek hayat problemlerini çözen uçtan uca çözümler geliştiriyorum.
-                        </p>
-                        
-                        <div class="hero-cta">
-                            <a href="#projects" class="hero-btn hero-btn-primary">
-                                <i class="fas fa-briefcase"></i>
-                                <span>Projelerimi İncele</span>
-                            </a>
-                            <a href="#contact" class="hero-btn hero-btn-secondary">
-                                <i class="fas fa-envelope"></i>
-                                <span>İletişime Geç</span>
-                            </a>
-                        </div>
-
-                        <div class="hero-social">
-                            <a href="https://github.com/ahmetmertkabak" target="_blank" class="hero-social-link" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/ahmet-mert-kabak-b32590273/" target="_blank" class="hero-social-link" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://instagram.com/mertt.kabak" target="_blank" class="hero-social-link" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-delay="300">
-                    <div class="hero-visual">
-                        <div class="floating-card">
-                            <div class="code-snippet">
-                                <div class="code-line">
-                                    <span class="code-keyword">const</span> 
-                                    <span class="code-variable">Profil</span> = {
-                                </div>
-                                <div class="code-line indent">
-                                    <span class="code-property">isim</span>: 
-                                    <span class="code-string">"Ahmet Mert Kabak"</span>,
-                                </div>
-                                <div class="code-line indent">
-                                    <span class="code-property">alan</span>: 
-                                    <span class="code-string">"Dağıtık Sistemler"</span>,
-                                </div>
-                                <div class="code-line indent">
-                                    <span class="code-property">teknolojiler</span>: [
-                                </div>
-                                <div class="code-line indent-2">
-                                    <span class="code-string">".NET Core"</span>, 
-                                    <span class="code-string">"Next.js"</span>,
-                                    <span class="code-string">"IoT"</span>
-                                </div>
-                                <div class="code-line indent">],</div>
-                                <div class="code-line indent">
-                                    <span class="code-property">konum</span>: 
-                                    <span class="code-string">"Kayseri, Türkiye"</span>
-                                </div>
-                                <div class="code-line">};</div>
-                            </div>
-                        </div>
-                        <div class="floating-icons">
-                            <div class="floating-icon" style="--delay: 0s;">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <div class="floating-icon" style="--delay: 0.5s;">
-                                <i class="fab fa-node-js"></i>
-                            </div>
-                            <div class="floating-icon" style="--delay: 1s;">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <div class="floating-icon" style="--delay: 1.5s;">
-                                <i class="fab fa-docker"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-            <span>Keşfet</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Hakkımda</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-5" data-aos="fade-right">
-                    <div class="profile-container">
-                        <div class="profile-wrapper">
-                            <img src="static/img/profile.jpg" alt="Ahmet Mert Kabak" class="profile-img">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7" data-aos="fade-left">
-                    <div class="about-content">
-                        <h3 class="about-title">Bilgisayar Mühendisi Öğrencisi</h3>
-                        <p class="about-text">
-                            Bilgisayar Mühendisliği 4. sınıf öğrencisiyim. Özellikle Backend mimarileri, dağıtık sistemler ve modern web teknolojileri 
-                            (Next.js, .NET Core) üzerine odaklanıyorum. Kayseri'de yaşıyorum ve teknoloji alanında kendimi sürekli geliştirmeye odaklanıyorum.
-                        </p>
-                        <p class="about-text">
-                            Okul projelerimde donanımdan (IoT) son kullanıcıya hitap eden SaaS platformlarına kadar gerçek hayat problemlerini çözen 
-                            uçtan uca çözümler geliştirdim. Öğrenmeye hevesli, yeni teknolojilere hızlı adapte olabilen ve takım çalışmasına yatkın birisiyim.
-                        </p>
-                        <div class="education-item">
-                            <div class="education-year">2022 - Devam</div>
-                            <div class="education-degree">Bilgisayar Mühendisliği (Lisans)</div>
-                            <div class="education-school">Sivas Cumhuriyet Üniversitesi</div>
-                        </div>
-                        <div class="education-item">
-                            <div class="education-year">2024 - Devam</div>
-                            <div class="education-degree">İşletme (Lisans)</div>
-                            <div class="education-school">Anadolu Üniversitesi - Uzaktan Eğitim</div>
-                        </div>
-                        <h4 class="mt-4 mb-3">İlgi Alanlarım</h4>
-                        <ul class="interests-list">
-                            <li class="interest-item">
-                                <i class="fas fa-server"></i>
-                                Backend Geliştirme
-                            </li>
-                            <li class="interest-item">
-                                <i class="fas fa-code"></i>
-                                Full Stack Geliştirme
-                            </li>
-                            <li class="interest-item">
-                                <i class="fab fa-node-js"></i>
-                                Node.js & Express
-                            </li>
-                            <li class="interest-item">
-                                <i class="fab fa-react"></i>
-                                React & Next.js
-                            </li>
-                            <li class="interest-item">
-                                <i class="fas fa-database"></i>
-                                Veritabanı Sistemleri
-                            </li>
-                            <li class="interest-item">
-                                <i class="fas fa-cloud"></i>
-                                Cloud & SaaS
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Quick Actions -->
-        <div class="container mt-5">
-            <div class="quick-actions-grid">
-                <a href="#projects" class="quick-action-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="action-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Projelerim</h3>
-                    <p>Geliştirdiğim projeleri inceleyin</p>
-                    <span class="action-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="#skills" class="quick-action-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="action-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Yeteneklerim</h3>
-                    <p>Teknik becerilerimi keşfedin</p>
-                    <span class="action-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="#contact" class="quick-action-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="action-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>İletişim</h3>
-                    <p>Benimle iletişime geçin</p>
-                    <span class="action-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-                <a href="https://github.com/ahmetmertkabak" target="_blank" class="quick-action-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="action-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub</h3>
-                    <p>Kodlarımı GitHub'da görün</p>
-                    <span class="action-arrow"><i class="fas fa-arrow-right"></i></span>
-                </a>
-            </div>
-        </div>
-    </section>
-        <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Yeteneklerim</h2>
-            <div class="row">
-                <!-- Programming Languages -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="skill-title">Programlama Dilleri</h3>
-                        <div class="skill-tags">
-                            <span class="skill-badge"><i class="fab fa-python"></i> Python</span>
-                            <span class="skill-badge"><i class="fab fa-js"></i> JavaScript</span>
-                            <span class="skill-badge"><i class="fab fa-js"></i> TypeScript</span>
-                            <span class="skill-badge"><i class="fab fa-java"></i> Java</span>
-                            <span class="skill-badge"><i class="fab fa-microsoft"></i> C#</span>
-                            <span class="skill-badge"><i class="fas fa-database"></i> SQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Backend & Database -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="skill-title">Backend & Veritabanı</h3>
-                        <div class="skill-tags">
-                            <span class="skill-badge"><i class="fab fa-node-js"></i> Node.js</span>
-                            <span class="skill-badge"><i class="fab fa-microsoft"></i> .NET Core</span>
-                            <span class="skill-badge"><i class="fas fa-database"></i> PostgreSQL</span>
-                            <span class="skill-badge"><i class="fas fa-bolt"></i> Supabase</span>
-                            <span class="skill-badge"><i class="fab fa-python"></i> Flask</span>
-                            <span class="skill-badge"><i class="fas fa-database"></i> MySQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Frontend & Tools -->
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3 class="skill-title">Frontend & Araçlar</h3>
-                        <div class="skill-tags">
-                            <span class="skill-badge"><i class="fab fa-react"></i> Next.js</span>
-                            <span class="skill-badge"><i class="fab fa-react"></i> React</span>
-                            <span class="skill-badge"><i class="fab fa-react"></i> React Native</span>
-                            <span class="skill-badge"><i class="fab fa-docker"></i> Docker</span>
-                            <span class="skill-badge"><i class="fab fa-git-alt"></i> Git</span>
-                            <span class="skill-badge"><i class="fas fa-network-wired"></i> Cisco Packet Tracer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Network & Security Section -->
-            <div class="row mt-4">
-                <div class="col-lg-12" data-aos="fade-up" data-aos-delay="600">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <h3 class="skill-title">Ağ & Güvenlik</h3>
-                        <div class="skill-tags mb-3">
-                            <span class="skill-badge"><i class="fas fa-network-wired"></i> Cisco Packet Tracer</span>
-                            <span class="skill-badge"><i class="fas fa-server"></i> Router/Switch Config</span>
-                            <span class="skill-badge"><i class="fas fa-shield-alt"></i> VLAN & ACL</span>
-                            <span class="skill-badge"><i class="fas fa-lock"></i> Port Security</span>
-                            <span class="skill-badge"><i class="fas fa-terminal"></i> SSH & DHCP</span>
-                        </div>
-                        <p class="skill-description" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                            Ağ altyapıları ve güvenlik protokolleri konusunda pratik deneyim. Yönlendirme, anahtarlama ve güvenlik politikaları oluşturma yetkinliği.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Projelerim</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                Geliştirdiğim projeler ve çalışmalarım
-            </p>
-            
-            <!-- Projects Filter -->
-            <div class="projects-filter" data-aos="fade-up" data-aos-delay="200">
-                <button class="filter-btn active" data-filter="all">Tümü</button>
-                <button class="filter-btn" data-filter="web">Web & Full Stack</button>
-                <button class="filter-btn" data-filter="iot">IoT</button>
-                <button class="filter-btn" data-filter="saas">SaaS</button>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Project items will be dynamically added here -->
-            </div>
-        </div>
-
-        <!-- Project Modal -->
-        <div id="projectModal" class="project-modal">
-            <div class="modal-content">
-                <span class="modal-close">&times;</span>
-                <div class="modal-body">
-                    <div class="modal-header">
-                        <h2 id="modalTitle"></h2>
-                        <div id="modalTags" class="modal-tags"></div>
-                    </div>
-                    <div id="modalImageContainer" class="modal-image-container">
-                        <img id="modalImage" src="" alt="" style="display: none;">
-                    </div>
-                    <div id="modalImageGallery" class="modal-image-gallery" style="display: none;"></div>
-                    <div class="modal-details">
-                        <div class="modal-section">
-                            <h3><i class="fas fa-info-circle"></i> Proje Hakkında</h3>
-                            <p id="modalDescription"></p>
-                        </div>
-                        <div class="modal-section">
-                            <h3><i class="fas fa-tools"></i> Kullanılan Teknolojiler</h3>
-                            <div id="modalTechnologies" class="tech-list"></div>
-                        </div>
-                        <div class="modal-section">
-                            <h3><i class="fas fa-star"></i> Özellikler</h3>
-                            <ul id="modalFeatures" class="features-list"></ul>
-                        </div>
-                        <div class="modal-section">
-                            <h3><i class="fas fa-link"></i> Bağlantılar</h3>
-                            <div id="modalLinks" class="project-links"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CV Section -->
-    <section id="cv" class="cv-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Özgeçmiş (CV)</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                Detaylı özgeçmişimi inceleyin veya PDF olarak indirin
-            </p>
-
-            <!-- CV Download Button -->
-            <div class="cv-download-container" data-aos="fade-up" data-aos-delay="200">
-                <a href="static/cv/Ahmet_Mert_Kabak_CV.pdf" download class="cv-download-btn">
-                    <i class="fas fa-download"></i>
-                    <span>CV'yi PDF Olarak İndir</span>
-                </a>
-                <a href="static/cv/Ahmet_Mert_Kabak_CV.pdf" target="_blank" class="cv-view-btn">
-                    <i class="fas fa-eye"></i>
-                    <span>PDF'i Görüntüle</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">İletişim</h2>
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="contact-card">
-                        <h3>İletişim Bilgileri</h3>
-                        <div class="contact-info mt-4">
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <p>ahmetkbk381@gmail.com</p>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <p>Kayseri, Türkiye</p>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-university"></i>
-                                <p>Sivas Cumhuriyet Üniversitesi</p>
-                            </div>
-                        </div>
-                        <div class="contact-social-links">
-                            <a href="https://instagram.com/mertt.kabak" target="_blank" class="contact-social-btn" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://github.com/ahmetmertkabak" target="_blank" class="contact-social-btn" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/ahmet-mert-kabak-b32590273/" target="_blank" class="contact-social-btn" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="contact-card">
-                        <h3>Mesaj Gönder</h3>
-                        <form class="contact-form mt-4" id="contactForm">
-                            <div class="mb-3">
-                                <input type="text" name="name" class="form-control" placeholder="Adınız" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" name="email" class="form-control" placeholder="E-posta Adresiniz" required>
-                            </div>
-                            <div class="mb-3">
-                                <textarea name="message" class="form-control" rows="5" placeholder="Mesajınız" required></textarea>
-                            </div>
-                            <button type="submit" class="contact-btn">
-                                <i class="fas fa-paper-plane me-2"></i>
-                                Gönder
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
-        <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">2024 · Ahmet Mert Kabak</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Loading Screen
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loading-screen');
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 500);
-        });
-
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-
-        // Scroll to Top
-        window.onscroll = function() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById('scrollToTop').style.display = 'flex';
-            } else {
-                document.getElementById('scrollToTop').style.display = 'none';
-            }
-        };
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Love Message Modal
-        function showLoveMessage() {
-            document.getElementById('loveModal').style.display = 'flex';
-            createFloatingHearts();
-        }
-
-        function closeLoveMessage() {
-            document.getElementById('loveModal').style.display = 'none';
-        }
-
-        function createFloatingHearts() {
-            const container = document.getElementById('floatingHearts');
-            container.innerHTML = '';
-            
-            for (let i = 0; i < 15; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.innerHTML = '❤️';
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                container.appendChild(heart);
-            }
-        }
-
-        // Skill Bars Animation
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-bar');
-            skillBars.forEach(bar => {
-                bar.style.transform = 'scaleX(1)';
-            });
-        }
-
-        // Trigger skill bars animation when skills section is in view
-        const skillsSection = document.querySelector('.skills-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
-                }
-            });
-        });
-
-        observer.observe(skillsSection);
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('loveModal');
-            if (event.target == modal) {
-                closeLoveMessage();
-            }
-        }
-
-        // Projects Data
-        const projectsData = [
-            {
-                id: 1,
-                title: "Gezicim – Akıllı Tur Platformu",
-                category: "web",
-                description: "Tur operatörlerini, rehberleri ve katılımcıları tek platformda buluşturan kapsamlı bir B2B/B2C sistemi. Bitirme projem (Work in Progress). Gerçek zamanlı iletişim, harita entegrasyonu ve kapsamlı yönetim paneli ile turizm sektörüne modern bir çözüm sunuyor.",
-                icon: "fas fa-map-marked-alt",
-                image: "static/img/projects/gezicim.png",
-                images: ["static/img/projects/gezicim.png"],
-                technologies: [
-                    { name: "Next.js", icon: "fab fa-react" },
-                    { name: "Supabase", icon: "fas fa-database" },
-                    { name: "React Native", icon: "fab fa-react" },
-                    { name: "Docker", icon: "fab fa-docker" },
-                    { name: "Mapbox", icon: "fas fa-map" },
-                    { name: "TypeScript", icon: "fab fa-js" }
-                ],
-                features: [
-                    "B2B/B2C platform mimarisi",
-                    "Next.js ile yönetim paneli (Operatör & Esnaf)",
-                    "Supabase real-time veritabanı ve kimlik doğrulama",
-                    "React Native mobil uygulama (Rehber & Katılımcı)",
-                    "Mapbox harita entegrasyonu",
-                    "Anlık sohbet ve anı duvarı",
-                    "Otomatik grup arşivleme sistemi",
-                    "Çoklu rol yönetimi ve izin sistemi",
-                    "Gerçek zamanlı bildirimler"
-                ],
-                links: []
-            },
-            {
-                id: 2,
-                title: "Akıllı Yemekhane Sistemi",
-                category: "iot",
-                description: "Okul kantininde temassız ve hızlı bir giriş sistemi. Raspberry Pi + RFID + Web Panel ile gerçek hayat IoT çözümü. Öğrenciler RFID kartları ile hızlıca giriş yapabilir, bakiyeleri otomatik düşer ve tüm işlemler web panelinden takip edilebilir.",
-                icon: "fas fa-utensils",
-                image: "static/img/projects/yemekhane.png",
-                images: ["static/img/projects/yemekhane.png", "static/img/projects/yemekhane1.png"],
-                technologies: [
-                    { name: "Raspberry Pi 4", icon: "fab fa-raspberry-pi" },
-                    { name: "Arduino Uno", icon: "fab fa-arduino" },
-                    { name: "RC522 RFID", icon: "fas fa-id-card" },
-                    { name: "Flask", icon: "fab fa-python" },
-                    { name: "MySQL", icon: "fas fa-database" },
-                    { name: "Cloudflare Tunnel", icon: "fas fa-cloud" },
-                    { name: "Python", icon: "fab fa-python" }
-                ],
-                features: [
-                    "RC522 RFID kart okuyucu entegrasyonu",
-                    "Flask tabanlı web panel ile öğrenci yönetimi",
-                    "Cloudflare ZeroTunnel ile lokalden internet erişimi",
-                    "LCD ekran ile anlık mesaj gösterimi",
-                    "İki farklı RC522 okuyucu (kantin + müdür odası)",
-                    "Anlık bakiye düşürme ve veritabanı işleme",
-                    "Gerçek hayat problemine çözüm",
-                    "Raporlama ve istatistik sistemi",
-                    "Güvenli veri işleme"
-                ],
-                links: []
-            },
-            {
-                id: 3,
-                title: "Çizgi Roman Platformu",
-                category: "web",
-                description: "300'den fazla çizgi roman evrenindeki karakterleri detaylı bilgileriyle sunan kapsamlı platform. Makine öğrenmesi destekli quiz sistemi ile kullanıcılar hangi karaktere benzediklerini keşfedebilir. Geniş veri tabanı ve interaktif özelliklerle çizgi roman severler için ideal bir platform.",
-                icon: "fas fa-mask",
-                image: "static/img/projects/cizgiroman.png",
-                images: ["static/img/projects/cizgiroman.png", "static/img/projects/cizgiroman1.png", "static/img/projects/cizgiroman2.png"],
-                technologies: [
-                    { name: "Next.js", icon: "fab fa-react" },
-                    { name: "React", icon: "fab fa-react" },
-                    { name: "Machine Learning", icon: "fas fa-brain" },
-                    { name: "LLM", icon: "fas fa-robot" },
-                    { name: "TypeScript", icon: "fab fa-js" },
-                    { name: "Tailwind CSS", icon: "fab fa-css3-alt" }
-                ],
-                features: [
-                    "300+ çizgi roman evreni ve karakter bilgileri",
-                    "Makine öğrenmesi destekli 'Hangi Karaktersin?' quizi",
-                    "Bilgi testi ile kullanıcı etkileşimi",
-                    "Sosyal medya paylaşım özelliği",
-                    "LLM tabanlı gelecek analizler için veri toplama",
-                    "Kullanıcı dostu arayüz",
-                    "Responsive tasarım",
-                    "SEO optimizasyonu"
-                ],
-                links: [
-                    { name: "Live Demo", url: "https://www.cizgiromanim.com", icon: "fas fa-external-link-alt" }
-                ]
-            },
-            {
-                id: 4,
-                title: "Tantuni - KPSS Matematik Chatbot",
-                category: "ai",
-                description: "KPSS matematik hazırlığı yapan öğrencilere yardımcı olan yapay zeka destekli chatbot. Samimi öğretmen yaklaşımı ile adım adım problem çözümleri.",
-                icon: "fas fa-graduation-cap",
-                image: "static/img/projects/tantuni.jpg",
-                images: ["static/img/projects/tantuni.jpg", "static/img/projects/tantuni1.jpg", "static/img/projects/tantuni2.jpg", "static/img/projects/tantuni3.jpg", "static/img/projects/tanntuni4.jpg"],
-                technologies: [
-                    { name: "Python", icon: "fab fa-python" },
-                    { name: "Flask", icon: "fab fa-python" },
-                    { name: "AI/LLM", icon: "fas fa-brain" },
-                    { name: "EdTech", icon: "fas fa-graduation-cap" }
-                ],
-                features: [
-                    "Akıllı ve samimi öğretmen yaklaşımı",
-                    "Adım adım problem çözümleri",
-                    "KPSS'ye özel matematik konuları (soru dağılımına göre)",
-                    "Bağlam koruma - önceki cevapları hatırlama",
-                    "Her an erişilebilir öğrenme desteği",
-                    "Stresli süreci kolaylaştırma"
-                ],
-                links: []
-            },
-            {
-                id: 5,
-                title: "Dilekçecim – Resmi Dilekçe SaaS",
-                category: "saas",
-                description: "Vatandaşların resmi kurumlara başvurularını kolaylaştıran SaaS tabanlı web uygulaması. AI destekli dilekçe düzenleme ve client-side PDF oluşturma.",
-                icon: "fas fa-file-signature",
-                image: "static/img/projects/dilekce.png",
-                images: ["static/img/projects/dilekce.png", "static/img/projects/dilekce1.png", "static/img/projects/dilekce2.png"],
-                technologies: [
-                    { name: "Next.js", icon: "fab fa-react" },
-                    { name: "React", icon: "fab fa-react" },
-                    { name: "Supabase", icon: "fas fa-database" },
-                    { name: "AI Integration", icon: "fas fa-brain" },
-                    { name: "React PDF", icon: "fas fa-file-pdf" },
-                    { name: "React Hook Form", icon: "fas fa-edit" }
-                ],
-                features: [
-                    "3 adımlık sezgisel sihirbaz arayüzü",
-                    "Canlı PDF önizleme",
-                    "AI destekli dilekçe düzenleme",
-                    "Client-side PDF oluşturma (veri gizliliği)",
-                    "Hazır şablon desteği",
-                    "Giriş yapmadan PDF indirme",
-                    "Dashboard ile dilekçe takibi",
-                    "Onboarding sistemi ile kullanıcı yönlendirme"
-                ],
-                links: []
-            },
-            {
-                id: 6,
-                title: "Laboratuvar Takip Sistemi",
-                category: "web",
-                description: "Laboratuvardaki bilgisayar sayısı ve rezervasyon takibini yapan sistem. Öğrenciler günde 2 saat, 1 bilgisayar kiralayabilir. Öğretmen onayı ile real-time rezervasyon.",
-                icon: "fas fa-laptop-code",
-                image: "static/img/projects/lab.png",
-                images: ["static/img/projects/lab.png", "static/img/projects/lab1.png", "static/img/projects/lab2.png"],
-                technologies: [
-                    { name: "Next.js", icon: "fab fa-react" },
-                    { name: "Real-time", icon: "fas fa-sync" },
-                    { name: "Supabase", icon: "fas fa-database" },
-                    { name: "WebSocket", icon: "fas fa-network-wired" }
-                ],
-                features: [
-                    "Bilgisayar sayısı ve durum takibi",
-                    "Öğrenci rezervasyon sistemi (günde 2 saat limit)",
-                    "Öğretmen onay mekanizması",
-                    "Real-time rezervasyon durumu güncelleme",
-                    "Canlı sistem ile anlık doluluk gösterimi",
-                    "Başvuru ve oturum takibi",
-                    "Kullanıcı dostu arayüz"
-                ],
-                links: []
-            },
-            {
-                id: 7,
-                title: "Sporsever – Spor Arkadaşı Bulma",
-                category: "web",
-                description: "Kullanıcıların yetenek seviyelerine ve konumlarına göre spor partneri bulmasını sağlayan platform. Onboarding sistemi ile 5 aşamalı kayıt ve eşleşme.",
-                icon: "fas fa-running",
-                image: "static/img/projects/sporsever.png",
-                images: ["static/img/projects/sporsever.png", "static/img/projects/sporsever1.png", "static/img/projects/sporsever2.png"],
-                technologies: [
-                    { name: "Next.js", icon: "fab fa-react" },
-                    { name: "React", icon: "fab fa-react" },
-                    { name: "React Native", icon: "fab fa-react" },
-                    { name: "Supabase", icon: "fas fa-database" },
-                    { name: "Node.js", icon: "fab fa-node-js" }
-                ],
-                features: [
-                    "5 aşamalı onboarding sistemi",
-                    "Konum tabanlı eşleşme algoritmaları",
-                    "İlan açma ve başvuru sistemi",
-                    "Takım açma ve rakip bulma",
-                    "Real-time sohbet ve bildirimler",
-                    "Rozet ve değerlendirme sistemi",
-                    "Matches, İlanlar, Takımlar, Gruplar modülleri",
-                    "Google OAuth entegrasyonu"
-                ],
-                links: []
-            },
-            {
-                id: 8,
-                title: "Çok Yönlü Chatbot Sistemi",
-                category: "ai",
-                description: "Günlük alışkanlık verilerine göre öğrencilerin not ortalamasını tahmin eden yapay zeka destekli chatbot. MLPRegressor ile GPA tahmini.",
-                icon: "fas fa-robot",
-                image: "static/img/projects/chatbot.jpg",
-                technologies: [
-                    { name: "Python", icon: "fab fa-python" },
-                    { name: "Flask", icon: "fab fa-python" },
-                    { name: "MLPRegressor", icon: "fas fa-brain" },
-                    { name: "Scikit-learn", icon: "fas fa-chart-line" },
-                    { name: "Gemini API", icon: "fas fa-robot" }
-                ],
-                features: [
-                    "MLPRegressor ile GPA tahmin modeli",
-                    "5 soru ile veri toplama",
-                    "Etkileşimli sohbet ekranı",
-                    "GridSearchCV ile hiperparametre optimizasyonu",
-                    "Gemini API ile doğal dil yanıtı",
-                    "Model esnekliği - yeni modeller kolayca eklenebilir",
-                    "Flask arayüzü entegrasyonu"
-                ],
-                links: []
-            }
-        ];
-
-        // Initialize Projects
-        function initializeProjects() {
-            const projectsGrid = document.getElementById('projectsGrid');
-            projectsGrid.innerHTML = '';
-
-            projectsData.forEach(project => {
-                const projectCard = document.createElement('div');
-                projectCard.className = 'project-card';
-                projectCard.dataset.category = project.category;
-                projectCard.setAttribute('data-aos', 'fade-up');
-
-                const techTags = project.technologies.map(tech => 
-                    `<span class="tech-tag" data-tech="${tech.name}">
-                        <i class="${tech.icon || 'fas fa-code'}"></i>
-                        <span>${tech.name}</span>
-                    </span>`
-                ).join('');
-
-                const projectIcon = project.icon || project.technologies[0]?.icon || 'fas fa-code';
-                
-                // Check if project has image
-                const hasImage = project.image && project.image !== '';
-                const imageHTML = hasImage 
-                    ? `<img src="${project.image}" alt="${project.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                       <div class="project-image" style="display: none;">
-                           <i class="${projectIcon} project-icon"></i>
-                       </div>`
-                    : `<div class="project-image">
-                           <i class="${projectIcon} project-icon"></i>
-                       </div>`;
-
-                // Get project stats
-                const techCount = project.technologies ? project.technologies.length : 0;
-                const featureCount = project.features ? project.features.length : 0;
-                const hasLinks = project.links && project.links.length > 0;
-
-                // Add cache busting to images
-                const cacheBuster = '?v=' + new Date().getTime();
-                const imageSrc = hasImage ? project.image + cacheBuster : '';
-                
-                const imageHTMLWithCache = hasImage 
-                    ? `<img src="${imageSrc}" alt="${project.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                       <div class="project-image" style="display: none;">
-                           <i class="${projectIcon} project-icon"></i>
-                       </div>`
-                    : `<div class="project-image">
-                           <i class="${projectIcon} project-icon"></i>
-                       </div>`;
-
-                projectCard.innerHTML = `
-                    <div class="project-image-wrapper" style="position: relative; width: 100%; height: 300px; overflow: hidden;">
-                        ${imageHTMLWithCache}
-                        <div class="project-image-overlay">
-                            <div class="project-image-overlay-text">
-                                <i class="fas fa-eye me-2"></i>Detayları görmek için tıklayın
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">${getCategoryName(project.category)}</span>
-                        <h3 class="project-title">${project.title}</h3>
-                        <p class="project-description">${project.description}</p>
-                        <div class="project-tech">
-                            ${techTags}
-                        </div>
-                        <div class="project-footer">
-                            <div class="project-stats">
-                                <div class="project-stat-item">
-                                    <i class="fas fa-tools"></i>
-                                    <span>${techCount} Teknoloji</span>
-                                </div>
-                                <div class="project-stat-item">
-                                    <i class="fas fa-star"></i>
-                                    <span>${featureCount} Özellik</span>
-                                </div>
-                            </div>
-                            <div class="project-footer-actions">
-                                ${hasLinks ? project.links.map(link => 
-                                    `<a href="${link.url}" target="_blank" class="project-link-demo" onclick="event.stopPropagation();" rel="noopener noreferrer">
-                                        <i class="${link.icon || 'fas fa-external-link-alt'}"></i>
-                                        ${link.name}
-                                    </a>`
-                                ).join('') : ''}
-                                <a href="#" class="project-link" onclick="event.stopPropagation(); openProjectModal(${project.id}); return false;">
-                                    Detayları Gör <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                // Add click event to entire card
-                projectCard.addEventListener('click', function(e) {
-                    // Don't open modal if clicking on links or buttons
-                    if (e.target.closest('a') || e.target.closest('button')) {
-                        return;
-                    }
-                    openProjectModal(project.id);
-                });
-
-                projectsGrid.appendChild(projectCard);
-            });
-
-            // Initialize AOS for new elements
-            AOS.refresh();
-        }
-
-        function getCategoryName(category) {
-            const categories = {
-                'all': 'Tümü',
-                'web': 'Web & Full Stack',
-                'iot': 'IoT',
-                'saas': 'SaaS'
-            };
-            return categories[category] || category;
-        }
-
-        // Filter Projects
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active state
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                const filter = this.dataset.filter;
-                const projectCards = document.querySelectorAll('.project-card');
-
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'scale(1)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-
-        // Open Project Modal
-        function openProjectModal(projectId) {
-            const project = projectsData.find(p => p.id === projectId);
-            if (!project) return;
-
-            const modal = document.getElementById('projectModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalTags = document.getElementById('modalTags');
-            const modalImage = document.getElementById('modalImage');
-            const modalDescription = document.getElementById('modalDescription');
-            const modalTechnologies = document.getElementById('modalTechnologies');
-            const modalFeatures = document.getElementById('modalFeatures');
-            const modalLinks = document.getElementById('modalLinks');
-
-            modalTitle.textContent = project.title;
-            modalTags.innerHTML = `<span class="modal-tag">${getCategoryName(project.category)}</span>`;
-            
-            // Set images - support both single image and gallery
-            const modalImageContainer = document.getElementById('modalImageContainer');
-            const modalImageGallery = document.getElementById('modalImageGallery');
-            
-            if (project.images && project.images.length > 0) {
-                // Multiple images - show slider
-                const cacheBuster = '?v=' + new Date().getTime();
-                const imagesWithCache = project.images.map(img => img + cacheBuster);
-                modalImageContainer.style.display = 'none';
-                modalImageGallery.style.display = 'block';
-                modalImageGallery.className = 'modal-image-slider';
-                modalImageGallery.innerHTML = `
-                    <div class="slider-container">
-                        <div class="slider-wrapper" id="sliderWrapper">
-                            ${project.images.map((img, index) => 
-                                `<div class="slider-slide">
-                                    <img src="${img + cacheBuster}" alt="${project.title} - Görsel ${index + 1}">
-                                </div>`
-                            ).join('')}
-                        </div>
-                        ${project.images.length > 1 ? `
-                            <button class="slider-nav slider-prev" onclick="changeSlide(-1)">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-nav slider-next" onclick="changeSlide(1)">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                            <div class="slider-dots" id="sliderDots">
-                                ${project.images.map((_, index) => 
-                                    `<div class="slider-dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>`
-                                ).join('')}
-                            </div>
-                            <div class="slider-counter">
-                                <span id="currentSlide">1</span> / <span id="totalSlides">${project.images.length}</span>
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-                
-                // Initialize slider
-                currentSliderIndex = 0;
-                totalSlides = project.images.length;
-            } else if (project.image && project.image !== '') {
-                // Single image - add cache busting
-                const cacheBuster = '?v=' + new Date().getTime();
-                modalImageContainer.style.display = 'flex';
-                modalImageGallery.style.display = 'none';
-                modalImage.src = project.image + cacheBuster;
-                modalImage.alt = project.title;
-                modalImage.style.display = 'block';
-            } else {
-                // No image - show icon
-                modalImageContainer.style.display = 'flex';
-                modalImageGallery.style.display = 'none';
-                modalImage.style.display = 'none';
-                const iconElement = document.createElement('i');
-                iconElement.className = project.icon || 'fas fa-code';
-                iconElement.style.fontSize = '5rem';
-                iconElement.style.color = 'rgba(255,255,255,0.5)';
-                if (!modalImageContainer.querySelector('i')) {
-                    modalImageContainer.appendChild(iconElement);
-                }
-            }
-
-            modalDescription.textContent = project.description;
-
-            // Technologies
-            modalTechnologies.innerHTML = project.technologies.map(tech => 
-                `<div class="tech-item">
-                    <i class="${tech.icon}"></i>
-                    <span>${tech.name}</span>
-                </div>`
-            ).join('');
-
-            // Features
-            modalFeatures.innerHTML = project.features.map(feature => 
-                `<li>${feature}</li>`
-            ).join('');
-
-            // Links
-            modalLinks.innerHTML = project.links.map(link => 
-                `<a href="${link.url}" target="_blank" class="project-link-btn">
-                    <i class="${link.icon}"></i>
-                    ${link.name}
-                </a>`
-            ).join('');
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close Project Modal
-        document.querySelector('.modal-close').addEventListener('click', function() {
-            const modal = document.getElementById('projectModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Close modal when clicking outside
-        document.getElementById('projectModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Image Lightbox Functions
-        let currentLightboxImages = [];
-        let currentLightboxIndex = 0;
-
-        function openImageLightbox(imageSrc, index = 0, images = null) {
-            if (images && images.length > 0) {
-                currentLightboxImages = images;
-                currentLightboxIndex = index;
-            } else {
-                currentLightboxImages = [imageSrc];
-                currentLightboxIndex = 0;
-            }
-
-            const lightbox = document.getElementById('imageLightbox');
-            const lightboxImg = document.getElementById('lightboxImage');
-            
-            if (lightbox && lightboxImg) {
-                lightboxImg.src = currentLightboxImages[currentLightboxIndex];
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                updateLightboxNav();
-            } else {
-                // Create lightbox if it doesn't exist
-                createImageLightbox();
-                setTimeout(() => openImageLightbox(imageSrc, index, images), 100);
-            }
-        }
-
-        function createImageLightbox() {
-            const lightbox = document.createElement('div');
-            lightbox.id = 'imageLightbox';
-            lightbox.className = 'image-lightbox';
-            lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <span class="lightbox-close" onclick="closeImageLightbox()">&times;</span>
-                    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)" id="lightboxPrev">
-                        <i class="fas fa-chevron-left"></i>
+                        <span class="desktop-icon__label">Tarayıcı</span>
                     </button>
-                    <img id="lightboxImage" src="" alt="Proje Görseli">
-                    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)" id="lightboxNext">
-                        <i class="fas fa-chevron-right"></i>
+                    <button class="desktop-icon" data-app-target="projects" data-window-title="Dosyalar - Projeler" type="button">
+                        <span class="desktop-icon__art desktop-icon__art--folder">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </span>
+                        <span class="desktop-icon__label">Projeler</span>
+                    </button>
+                    <button class="desktop-icon" data-app-target="about" data-window-title="Dosyalar - Hakkımda" type="button">
+                        <span class="desktop-icon__art desktop-icon__art--home">
+                            <i class="fa-solid fa-house"></i>
+                        </span>
+                        <span class="desktop-icon__label">Hakkımda</span>
+                    </button>
+                    <button class="desktop-icon" data-app-target="skills" data-window-title="Terminal - Uzmanlık" type="button">
+                        <span class="desktop-icon__art desktop-icon__art--terminal">
+                            <i class="fa-solid fa-terminal"></i>
+                        </span>
+                        <span class="desktop-icon__label">Terminal</span>
+                    </button>
+                    <button class="desktop-icon" data-app-target="cv" data-window-title="Belge Görüntüleyici - CV" type="button">
+                        <span class="desktop-icon__art desktop-icon__art--doc">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </span>
+                        <span class="desktop-icon__label">CV.pdf</span>
+                    </button>
+                    <button class="desktop-icon" data-app-target="contact" data-window-title="Posta - Yeni Mesaj" type="button">
+                        <span class="desktop-icon__art desktop-icon__art--mail">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </span>
+                        <span class="desktop-icon__label">İletişim</span>
+                    </button>
+                    <button class="desktop-icon" data-app-target="trash" data-window-title="Çöp Kutusu" type="button">
+                        <span class="desktop-icon__art desktop-icon__art--trash">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </span>
+                        <span class="desktop-icon__label">Çöp Kutusu</span>
+                    </button>
+                </section>
+
+                <div class="desktop-note">
+                    <span class="desktop-note__label">Selam 👋</span>
+                    <h1>macOS hissini biraz ücretsiz yaşarken bir yandan da neler yaptığımı gezebileceğin küçük bir masaüstü hazırladım.</h1>
+                    <p>
+                        Projeler, terminal, CV ve hakkımda kısmı burada. Karıştırman serbest; ben de
+                        mümkün olduğunca sade ve samimi tutmaya çalıştım ☕
+                    </p>
+                </div>
+
+                <div class="context-menu" id="desktopContextMenu" hidden>
+                    <button class="context-menu__item" data-menu-action="browser" type="button">
+                        <i class="fa-brands fa-chrome"></i>
+                        Tarayıcıyı Aç
+                    </button>
+                    <button class="context-menu__item" data-menu-action="about" type="button">
+                        <i class="fa-solid fa-house"></i>
+                        Hakkımda’yı Aç
+                    </button>
+                    <button class="context-menu__item" data-menu-action="terminal" type="button">
+                        <i class="fa-solid fa-terminal"></i>
+                        Terminali Aç
+                    </button>
+                    <button class="context-menu__item" data-menu-action="trash" type="button">
+                        <i class="fa-solid fa-trash-can"></i>
+                        Çöp Kutusunu Aç
+                    </button>
+                    <div class="context-menu__divider"></div>
+                    <button class="context-menu__item" data-menu-action="refresh" type="button">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        Masaüstünü Yenile
+                    </button>
+                    <button class="context-menu__item" data-menu-action="close-all" type="button">
+                        <i class="fa-solid fa-xmark"></i>
+                        Tüm Pencereleri Kapat
+                    </button>
+                    <button class="context-menu__item" data-menu-action="boot" type="button">
+                        <i class="fa-brands fa-ubuntu"></i>
+                        Açılış Ekranını Oynat
                     </button>
                 </div>
-            `;
-            document.body.appendChild(lightbox);
 
-            // Close on background click
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeImageLightbox();
-                }
-            });
+                <section class="window-layer" id="windowLayer">
+                    <article
+                        class="app-window"
+                        data-app-window="browser"
+                        data-title="Tarayıcı - Başlangıç Sayfası"
+                        data-left="84"
+                        data-top="64"
+                        data-width="560"
+                        data-height="560"
+                    >
+                        <header class="window-titlebar" data-drag-handle="true">
+                            <div class="window-controls">
+                                <button class="window-control window-control--close" data-window-action="close" type="button" aria-label="Pencereyi kapat"></button>
+                                <button class="window-control window-control--minimize" data-window-action="minimize" type="button" aria-label="Pencereyi küçült"></button>
+                                <button class="window-control window-control--maximize" data-window-action="maximize" type="button" aria-label="Pencereyi büyüt"></button>
+                            </div>
+                            <div class="window-title">Tarayıcı - Başlangıç Sayfası</div>
+                        </header>
+                        <div class="browser-toolbar">
+                            <div class="browser-toolbar__nav">
+                                <button class="browser-toolbar__button" data-browser-nav="back" type="button" aria-label="Önceki sayfa">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <button class="browser-toolbar__button" data-browser-nav="forward" type="button" aria-label="Sonraki sayfa">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                            <div class="browser-toolbar__address" id="browserAddress">
+                                <i class="fa-solid fa-lock"></i>
+                                portfolio://başlangıç
+                            </div>
+                            <button class="browser-toolbar__button" data-browser-nav="refresh" type="button" aria-label="Sayfayı yenile">
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </button>
+                        </div>
+                        <div class="window-content browser-layout">
+                            <section class="browser-page is-active" data-browser-view="home">
+                                <section class="browser-hero">
+                                    <p class="mini-label">Başlangıç Sayfası</p>
+                                    <h2>Merhaba, Ben Ad Soyad.</h2>
+                                    <p>
+                                        Backend mimarileri, dağıtık sistemler, modern web ürünleri ve
+                                        IoT projeleri üretiyorum. Buradaki masaüstü, klasik bir portföy
+                                        sayfası yerine çalışma stilimi biraz daha karakterli bir şekilde
+                                        göstermek için tasarlandı.
+                                    </p>
+                                    <div class="button-row">
+                                        <button class="action-button" data-open-app="projects" type="button">
+                                            <i class="fa-solid fa-folder-open"></i>
+                                            Projeleri Aç
+                                        </button>
+                                        <button class="action-button action-button--ghost" data-open-app="about" type="button">
+                                            <i class="fa-solid fa-user"></i>
+                                            Hakkımda
+                                        </button>
+                                        <button class="action-button action-button--ghost" data-open-app="contact" type="button">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            İletişim
+                                        </button>
+                                    </div>
+                                </section>
 
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (lightbox.classList.contains('active')) {
-                    if (e.key === 'Escape') closeImageLightbox();
-                    if (e.key === 'ArrowLeft') navigateLightbox(-1);
-                    if (e.key === 'ArrowRight') navigateLightbox(1);
-                }
-            });
-        }
+                                <div class="browser-grid">
+                                    <article class="browser-card">
+                                        <p class="mini-label">Şu Anda Odaklandığım Alanlar</p>
+                                        <ul class="plain-list">
+                                            <li>Gerçek zamanlı veri akışları ve rol bazlı paneller</li>
+                                            <li>Next.js, Supabase ve .NET tabanlı ürün mimarileri</li>
+                                            <li>IoT ile web tarafını birleştiren saha çözümleri</li>
+                                        </ul>
+                                    </article>
 
-        function closeImageLightbox() {
-            const lightbox = document.getElementById('imageLightbox');
-            if (lightbox) {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
+                                    <article class="browser-card">
+                                        <p class="mini-label">Hızlı Kısayollar</p>
+                                        <div class="browser-links">
+                                            <button class="browser-link" data-open-app="skills" type="button">
+                                                <i class="fa-solid fa-terminal"></i>
+                                                Terminali Aç
+                                            </button>
+                                            <button class="browser-link" data-open-app="cv" type="button">
+                                                <i class="fa-solid fa-file-lines"></i>
+                                                CV’yi Gör
+                                            </button>
+                                            <a class="browser-link" href="https://github.com/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">
+                                                <i class="fa-brands fa-github"></i>
+                                                GitHub
+                                            </a>
+                                            <a class="browser-link" href="https://linkedin.com/in/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                                LinkedIn
+                                            </a>
+                                        </div>
+                                    </article>
 
-        function navigateLightbox(direction) {
-            if (currentLightboxImages.length <= 1) return;
-            
-            currentLightboxIndex += direction;
-            
-            if (currentLightboxIndex < 0) {
-                currentLightboxIndex = currentLightboxImages.length - 1;
-            } else if (currentLightboxIndex >= currentLightboxImages.length) {
-                currentLightboxIndex = 0;
-            }
-            
-            const lightboxImg = document.getElementById('lightboxImage');
-            if (lightboxImg) {
-                lightboxImg.style.opacity = '0';
-                setTimeout(() => {
-                    lightboxImg.src = currentLightboxImages[currentLightboxIndex];
-                    lightboxImg.style.opacity = '1';
-                }, 150);
-            }
-            
-            updateLightboxNav();
-        }
+                                    <article class="browser-card">
+                                        <p class="mini-label">Sistem Notu</p>
+                                        <p>
+                                            Bu masaüstü deneyimi, Linux hissi taşıyan özel bir portföy katmanı.
+                                            Her pencere, benimle ilgili başka bir katmanı daha doğal bir akışla
+                                            göstermeyi amaçlıyor.
+                                        </p>
+                                    </article>
 
-        function updateLightboxNav() {
-            const prevBtn = document.getElementById('lightboxPrev');
-            const nextBtn = document.getElementById('lightboxNext');
-            
-            if (currentLightboxImages.length <= 1) {
-                if (prevBtn) prevBtn.style.display = 'none';
-                if (nextBtn) nextBtn.style.display = 'none';
-            } else {
-                if (prevBtn) prevBtn.style.display = 'flex';
-                if (nextBtn) nextBtn.style.display = 'flex';
-            }
-        }
+                                    <article class="browser-card">
+                                        <p class="mini-label">Hızlı Bilgiler</p>
+                                        <div class="stats-grid stats-grid--browser">
+                                            <div class="stat-chip">
+                                                <strong>8+</strong>
+                                                <span>Portföy projesi</span>
+                                            </div>
+                                            <div class="stat-chip">
+                                                <strong>2</strong>
+                                                <span>Lisans eğitimi</span>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </section>
 
-        // Image Slider Functions
-        let currentSliderIndex = 0;
-        let totalSlides = 0;
+                            <section class="browser-page" data-browser-view="about">
+                                <section class="browser-hero">
+                                    <p class="mini-label">Hakkımda</p>
+                                    <h2>Ürün mantığını seven, backend tarafında derine inmeyi seven bir geliştiriciyim.</h2>
+                                    <p>
+                                        Teknik olarak çalışan şeyleri seviyorum ama tek başına bu bana yetmiyor.
+                                        Benim için iyi ürün; kullanıcıya net gelen, rolleri iyi ayrılmış ve gerçek
+                                        ihtiyaca dokunan ürün.
+                                    </p>
+                                    <div class="button-row">
+                                        <button class="action-button" data-open-app="about" type="button">
+                                            <i class="fa-solid fa-folder-open"></i>
+                                            Hakkımda Dosyasını Aç
+                                        </button>
+                                        <button class="action-button action-button--ghost" data-open-app="skills" type="button">
+                                            <i class="fa-solid fa-terminal"></i>
+                                            Terminale Geç
+                                        </button>
+                                    </div>
+                                </section>
 
-        function changeSlide(direction) {
-            const wrapper = document.getElementById('sliderWrapper');
-            if (!wrapper) return;
-            
-            currentSliderIndex += direction;
-            
-            if (currentSliderIndex < 0) {
-                currentSliderIndex = totalSlides - 1;
-            } else if (currentSliderIndex >= totalSlides) {
-                currentSliderIndex = 0;
-            }
-            
-            updateSlider();
-        }
+                                <div class="browser-grid">
+                                    <article class="browser-card">
+                                        <p class="mini-label">Çalışma Şeklim</p>
+                                        <ul class="plain-list">
+                                            <li>Önce problemi ve kullanıcı akışını anlamak</li>
+                                            <li>Sonra veri modelini ve rol yapısını kurmak</li>
+                                            <li>Son aşamada arayüzü gereksiz kalabalıktan arındırmak</li>
+                                        </ul>
+                                    </article>
 
-        function goToSlide(index) {
-            currentSliderIndex = index;
-            updateSlider();
-        }
+                                    <article class="browser-card">
+                                        <p class="mini-label">Sevdiğim Alanlar</p>
+                                        <p>
+                                            SaaS ürünleri, yönetim panelleri, gerçek zamanlı akışlar,
+                                            IoT ile web tarafını birleştiren sistemler ve ürüne dönüşebilen fikirler.
+                                        </p>
+                                    </article>
+                                </div>
+                            </section>
 
-        function updateSlider() {
-            const wrapper = document.getElementById('sliderWrapper');
-            const dots = document.querySelectorAll('.slider-dot');
-            const currentSlideSpan = document.getElementById('currentSlide');
-            
-            if (wrapper) {
-                wrapper.style.transform = `translateX(-${currentSliderIndex * 100}%)`;
-            }
-            
-            if (dots) {
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSliderIndex);
-                });
-            }
-            
-            if (currentSlideSpan) {
-                currentSlideSpan.textContent = currentSliderIndex + 1;
-            }
-        }
+                            <section class="browser-page" data-browser-view="contact">
+                                <section class="browser-hero">
+                                    <p class="mini-label">İletişim</p>
+                                    <h2>Bir fikir, proje ya da sadece selam vermek istersen buradayım.</h2>
+                                    <p>
+                                        Staj, freelance, ortak geliştirme ya da yeni bir ürün fikri...
+                                        Yazmak istersen iletişim penceresini açman yeterli.
+                                    </p>
+                                    <div class="button-row">
+                                        <button class="action-button" data-open-app="contact" type="button">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            Mesaj Penceresini Aç
+                                        </button>
+                                        <button class="action-button action-button--ghost" data-open-app="cv" type="button">
+                                            <i class="fa-solid fa-file-lines"></i>
+                                            CV'yi Aç
+                                        </button>
+                                    </div>
+                                </section>
 
-        // Keyboard navigation for slider
-        document.addEventListener('keydown', function(e) {
-            const modal = document.getElementById('projectModal');
-            if (modal && modal.classList.contains('active') && totalSlides > 1) {
-                if (e.key === 'ArrowLeft') {
-                    changeSlide(-1);
-                } else if (e.key === 'ArrowRight') {
-                    changeSlide(1);
-                }
-            }
-        });
+                                <div class="browser-grid">
+                                    <article class="browser-card">
+                                        <p class="mini-label">Hızlı Linkler</p>
+                                        <div class="browser-links">
+                                            <a class="browser-link" href="mailto:ornek@mail.com">
+                                                <i class="fa-solid fa-paper-plane"></i>
+                                                Mail Gönder
+                                            </a>
+                                            <a class="browser-link" href="https://github.com/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">
+                                                <i class="fa-brands fa-github"></i>
+                                                GitHub
+                                            </a>
+                                            <a class="browser-link" href="https://linkedin.com/in/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">
+                                                <i class="fa-brands fa-linkedin"></i>
+                                                LinkedIn
+                                            </a>
+                                            <button class="browser-link" data-open-app="contact" type="button">
+                                                <i class="fa-solid fa-envelope-open-text"></i>
+                                                İletişim Formu
+                                            </button>
+                                        </div>
+                                    </article>
 
-        // Initialize projects on page load
-        initializeProjects();
+                                    <article class="browser-card">
+                                        <p class="mini-label">Not</p>
+                                        <p>
+                                            Uzun uzun resmi yazışma gerekmiyor. Kısa bir fikir bile bırakman yeterli.
+                                            Geri dönüş yapabileceğim net bir kanal bırakman işimi kolaylaştırır.
+                                        </p>
+                                    </article>
+                                </div>
+                            </section>
+                        </div>
+                    </article>
 
-        // Contact Form Submit Handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = this.querySelector('input[name="name"]').value;
-            const email = this.querySelector('input[name="email"]').value;
-            const message = this.querySelector('textarea[name="message"]').value;
-            
-            const subject = encodeURIComponent('Mert Kabak - Web Sitesinden Mesaj');
-            const body = encodeURIComponent(`İsim: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`);
-            
-            const mailtoLink = `mailto:ahmetkbk381@gmail.com?subject=${subject}&body=${body}`;
-            
-            window.location.href = mailtoLink;
-            
-            // Show success message
-            const submitBtn = this.querySelector('.contact-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Mail Uygulaması Açılıyor...';
-            submitBtn.style.background = '#4caf50';
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = '';
-                this.reset();
-            }, 2000);
-        });
+                    <article
+                        class="app-window"
+                        data-app-window="about"
+                        data-title="Dosyalar - Hakkımda"
+                        data-left="108"
+                        data-top="98"
+                        data-width="500"
+                        data-height="570"
+                    >
+                        <header class="window-titlebar" data-drag-handle="true">
+                            <div class="window-controls">
+                                <button class="window-control window-control--close" data-window-action="close" type="button" aria-label="Pencereyi kapat"></button>
+                                <button class="window-control window-control--minimize" data-window-action="minimize" type="button" aria-label="Pencereyi küçült"></button>
+                                <button class="window-control window-control--maximize" data-window-action="maximize" type="button" aria-label="Pencereyi büyüt"></button>
+                            </div>
+                            <div class="window-title">Dosyalar - Hakkımda</div>
+                        </header>
+                        <div class="window-toolbar">
+                            <span class="toolbar-pill">
+                                <i class="fa-solid fa-house"></i>
+                                /home/user/hakkımda
+                            </span>
+                        </div>
+                        <div class="window-content about-layout">
+                            <aside class="profile-card">
+                                <div class="profile-card__photo">
+                                    <img
+                                        data-profile-photo
+                                        src="static/img/profile.jpg"
+                                        alt="Ad Soyad"
+                                        loading="eager"
+                                        decoding="async"
+                                        fetchpriority="high"
+                                    >
+                                    <span class="profile-card__fallback" aria-hidden="true">AD</span>
+                                </div>
+                                <div class="profile-card__body">
+                                    <p class="mini-label">Kim Bu?</p>
+                                    <h2>Ad Soyad</h2>
+                                    <p>Yazılım Geliştirici, ürün düşünen backend geliştirici.</p>
+                                </div>
+                                <div class="profile-links">
+                                    <a href="mailto:ornek@mail.com">Mail</a>
+                                    <a href="https://linkedin.com/in/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                                    <a href="https://github.com/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                </div>
+                            </aside>
 
-    </script>
+                            <div class="about-copy">
+                                <section class="content-card">
+                                    <p class="mini-label">Kısa Özet</p>
+                                    <p>
+                                        Backend mimarileri, dağıtık sistemler, modern web ürünleri ve
+                                        IoT entegrasyonları üzerine çalışıyorum. Benim için iyi proje,
+                                        yalnızca teknik olarak çalışan değil; kullanıcı akışına, rol
+                                        yapısına ve gerçek ihtiyaca oturan projedir.
+                                    </p>
+                                </section>
+
+                                <section class="stats-grid">
+                                    <div class="stat-chip">
+                                        <strong>8+</strong>
+                                        <span>Portföy projesi</span>
+                                    </div>
+                                    <div class="stat-chip">
+                                        <strong>Web + IoT</strong>
+                                        <span>Hibrit ürün deneyimi</span>
+                                    </div>
+                                    <div class="stat-chip">
+                                        <strong>2 Lisans</strong>
+                                        <span>Mühendislik ve işletme bakışı</span>
+                                    </div>
+                                    <div class="stat-chip">
+                                        <strong>Şehir</strong>
+                                        <span>Uzaktan ve yerel iş birliklerine açık</span>
+                                    </div>
+                                </section>
+
+                                <section class="content-card">
+                                    <p class="mini-label">Eğitim</p>
+                                    <div class="timeline-list">
+                                        <div class="timeline-row">
+                                            <span>2022 - Devam</span>
+                                            <div>
+                                                <strong>Bilgisayar Mühendisliği</strong>
+                                                <p>Üniversite Adı</p>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-row">
+                                            <span>2024 - Devam</span>
+                                            <div>
+                                                <strong>İşletme</strong>
+                                                <p>İkinci Üniversite</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article
+                        class="app-window"
+                        data-app-window="projects"
+                        data-title="Dosyalar - Projeler"
+                        data-left="420"
+                        data-top="92"
+                        data-width="780"
+                        data-height="640"
+                    >
+                        <header class="window-titlebar" data-drag-handle="true">
+                            <div class="window-controls">
+                                <button class="window-control window-control--close" data-window-action="close" type="button" aria-label="Pencereyi kapat"></button>
+                                <button class="window-control window-control--minimize" data-window-action="minimize" type="button" aria-label="Pencereyi küçült"></button>
+                                <button class="window-control window-control--maximize" data-window-action="maximize" type="button" aria-label="Pencereyi büyüt"></button>
+                            </div>
+                            <div class="window-title">Dosyalar - Projeler</div>
+                        </header>
+                        <div class="window-toolbar">
+                            <span class="toolbar-pill">
+                                <i class="fa-solid fa-folder-open"></i>
+                                /home/user/projeler
+                            </span>
+                            <span class="toolbar-meta">Seçili ürünler ve saha odaklı çalışmalar</span>
+                        </div>
+                        <div class="window-content project-browser">
+                            <aside class="project-sidebar">
+                                <p class="mini-label">Kategoriler</p>
+                                <div class="sidebar-filter-list">
+                                    <button class="sidebar-filter is-active" data-filter="all" type="button">Tüm Projeler</button>
+                                    <button class="sidebar-filter" data-filter="web" type="button">Web ve Full Stack</button>
+                                    <button class="sidebar-filter" data-filter="iot" type="button">IoT</button>
+                                    <button class="sidebar-filter" data-filter="saas" type="button">SaaS</button>
+                                    <button class="sidebar-filter" data-filter="ai" type="button">Yapay Zekâ</button>
+                                </div>
+
+                                <div class="content-card compact-card">
+                                    <p class="mini-label">Çalışma Şekli</p>
+                                    <ul class="plain-list">
+                                        <li>Rol bazlı ürün kurguları</li>
+                                        <li>Gerçek hayat problemi çözen sistemler</li>
+                                        <li>Next.js, Supabase, Flask, .NET ve IoT karması</li>
+                                    </ul>
+                                </div>
+                            </aside>
+
+                            <div class="project-main">
+                                <div class="project-grid" id="projectsGrid" aria-live="polite"></div>
+                            </div>
+
+                            <aside class="project-inspector" id="projectInspector">
+                                <div class="project-inspector__empty">
+                                    Bir proje seçildiğinde detayları burada görünür.
+                                </div>
+                            </aside>
+                        </div>
+                    </article>
+
+                    <article
+                        class="app-window"
+                        data-app-window="skills"
+                        data-title="Terminal - Uzmanlık"
+                        data-left="170"
+                        data-top="144"
+                        data-width="640"
+                        data-height="490"
+                    >
+                        <header class="window-titlebar" data-drag-handle="true">
+                            <div class="window-controls">
+                                <button class="window-control window-control--close" data-window-action="close" type="button" aria-label="Pencereyi kapat"></button>
+                                <button class="window-control window-control--minimize" data-window-action="minimize" type="button" aria-label="Pencereyi küçült"></button>
+                                <button class="window-control window-control--maximize" data-window-action="maximize" type="button" aria-label="Pencereyi büyüt"></button>
+                            </div>
+                            <div class="window-title">Terminal - Uzmanlık</div>
+                        </header>
+                        <div class="window-content terminal-shell">
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">user@portfolio:~$</span>
+                                <span>whoami</span>
+                            </div>
+                            <div class="terminal-output">
+                                Backend mimarileri, ürün akışları ve dağıtık sistemlerle ilgilenen bir bilgisayar mühendisliği öğrencisi.
+                            </div>
+
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">user@portfolio:~$</span>
+                                <span>ls uzmanlık/</span>
+                            </div>
+                            <div class="terminal-tag-group">
+                                <span class="terminal-tag">Node.js</span>
+                                <span class="terminal-tag">.NET Core</span>
+                                <span class="terminal-tag">Supabase</span>
+                                <span class="terminal-tag">PostgreSQL</span>
+                                <span class="terminal-tag">Flask</span>
+                                <span class="terminal-tag">MySQL</span>
+                                <span class="terminal-tag">Next.js</span>
+                                <span class="terminal-tag">React</span>
+                                <span class="terminal-tag">React Native</span>
+                                <span class="terminal-tag">Docker</span>
+                                <span class="terminal-tag">Python</span>
+                                <span class="terminal-tag">IoT</span>
+                            </div>
+
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">user@portfolio:~$</span>
+                                <span>cat yaklaşım.txt</span>
+                            </div>
+                            <div class="terminal-output terminal-output--block">
+                                <p>1. Problemi önce anlamak</p>
+                                <p>2. Rol ve veri akışlarını net kurmak</p>
+                                <p>3. Arayüzü ürünün mantığına göre sade tutmak</p>
+                                <p>4. Demo yerine kullanılabilir ürün çıkarmak</p>
+                            </div>
+
+                            <div class="terminal-line">
+                                <span class="terminal-prompt">user@portfolio:~$</span>
+                                <span>tail -n 4 sistem-günlüğü.log</span>
+                            </div>
+                            <div class="terminal-output terminal-output--block terminal-output--success">
+                                <p>[Tamam] Proje paneli güncellendi.</p>
+                                <p>[Tamam] Gerçek zamanlı akışlar tasarlandı.</p>
+                                <p>[Tamam] Portföy masaüstü arayüzü hazırlandı.</p>
+                                <p>[Hazır] Yeni fikirler ve iş birlikleri bekleniyor.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article
+                        class="app-window"
+                        data-app-window="cv"
+                        data-title="Belge Görüntüleyici - CV"
+                        data-left="248"
+                        data-top="78"
+                        data-width="650"
+                        data-height="560"
+                    >
+                        <header class="window-titlebar" data-drag-handle="true">
+                            <div class="window-controls">
+                                <button class="window-control window-control--close" data-window-action="close" type="button" aria-label="Pencereyi kapat"></button>
+                                <button class="window-control window-control--minimize" data-window-action="minimize" type="button" aria-label="Pencereyi küçült"></button>
+                                <button class="window-control window-control--maximize" data-window-action="maximize" type="button" aria-label="Pencereyi büyüt"></button>
+                            </div>
+                            <div class="window-title">Belge Görüntüleyici - CV</div>
+                        </header>
+                        <div class="window-toolbar">
+                            <span class="toolbar-pill">
+                                <i class="fa-solid fa-file-lines"></i>
+                                CV.pdf
+                            </span>
+                        </div>
+                        <div class="window-content cv-layout">
+                            <div class="cv-sheet">
+                                <div class="cv-sheet__header">
+                                    <p class="mini-label">Özgeçmiş Özeti</p>
+                                    <h2>Ad Soyad</h2>
+                                    <p>Backend, dağıtık sistemler, SaaS ürünleri ve IoT entegrasyonları</p>
+                                </div>
+
+                                <div class="cv-block">
+                                    <h3>Öne Çıkan Başlıklar</h3>
+                                    <ul class="plain-list">
+                                        <li>Yazılım Geliştirici</li>
+                                        <li>Next.js, Supabase, Flask ve .NET Core odaklı projeler</li>
+                                        <li>Gerçek hayat kullanımına uygun IoT ve SaaS deneyimi</li>
+                                        <li>Türkçe ürün kurgusu ve kullanıcı akışı düşüncesi</li>
+                                    </ul>
+                                </div>
+
+                                <div class="cv-block">
+                                    <h3>Hızlı Bağlantılar</h3>
+                                    <div class="button-row">
+                                        <a class="action-button" href="static/cv/CV.pdf" download>
+                                            <i class="fa-solid fa-download"></i>
+                                            CV’yi İndir
+                                        </a>
+                                        <a class="action-button action-button--ghost" href="static/cv/CV.pdf" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-regular fa-eye"></i>
+                                            Yeni Sekmede Aç
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article
+                        class="app-window"
+                        data-app-window="contact"
+                        data-title="Posta - Yeni Mesaj"
+                        data-left="760"
+                        data-top="150"
+                        data-width="490"
+                        data-height="530"
+                    >
+                        <header class="window-titlebar" data-drag-handle="true">
+                            <div class="window-controls">
+                                <button class="window-control window-control--close" data-window-action="close" type="button" aria-label="Pencereyi kapat"></button>
+                                <button class="window-control window-control--minimize" data-window-action="minimize" type="button" aria-label="Pencereyi küçült"></button>
+                                <button class="window-control window-control--maximize" data-window-action="maximize" type="button" aria-label="Pencereyi büyüt"></button>
+                            </div>
+                            <div class="window-title">Posta - Yeni Mesaj</div>
+                        </header>
+                        <div class="window-content contact-layout">
+                            <div class="contact-overview">
+                                <p class="mini-label">İletişim Kanalları</p>
+                                <a class="contact-overview__mail" href="mailto:ornek@mail.com">ornek@mail.com</a>
+                                <a href="https://github.com/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">GitHub Profili</a>
+                                <a href="https://linkedin.com/in/KULLANICI_ADINIZ" target="_blank" rel="noopener noreferrer">LinkedIn Profili</a>
+                                <p>
+                                    Yeni bir ürün, staj, freelance iş ya da ortak geliştirme fikri varsa
+                                    buradan hızlıca mesaj bırakabilirsin.
+                                </p>
+                            </div>
+
+                            <form class="mail-form" id="contactForm">
+                                <label class="mail-field">
+                                    <span>Konu</span>
+                                    <input type="text" name="subject" placeholder="Yeni proje fikri" required>
+                                </label>
+                                <label class="mail-field">
+                                    <span>Adınız</span>
+                                    <input type="text" name="name" placeholder="Ad Soyad" required>
+                                </label>
+                                <label class="mail-field">
+                                    <span>E-posta</span>
+                                    <input type="email" name="email" placeholder="ornek@mail.com" required>
+                                </label>
+                                <label class="mail-field">
+                                    <span>Mesaj</span>
+                                    <textarea name="message" rows="6" placeholder="Nasıl bir şey düşünüyorsunuz?" required></textarea>
+                                </label>
+                                <button class="action-button" type="submit">
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                    Mail Uygulamasında Aç
+                                </button>
+                                <p class="mail-status" id="mailStatus" aria-live="polite"></p>
+                            </form>
+                        </div>
+                    </article>
+
+                    <article
+                        class="app-window"
+                        data-app-window="trash"
+                        data-title="Çöp Kutusu"
+                        data-left="320"
+                        data-top="128"
+                        data-width="560"
+                        data-height="470"
+                    >
+                        <header class="window-titlebar" data-drag-handle="true">
+                            <div class="window-controls">
+                                <button class="window-control window-control--close" data-window-action="close" type="button" aria-label="Pencereyi kapat"></button>
+                                <button class="window-control window-control--minimize" data-window-action="minimize" type="button" aria-label="Pencereyi küçült"></button>
+                                <button class="window-control window-control--maximize" data-window-action="maximize" type="button" aria-label="Pencereyi büyüt"></button>
+                            </div>
+                            <div class="window-title">Çöp Kutusu</div>
+                        </header>
+                        <div class="window-toolbar">
+                            <span class="toolbar-pill">
+                                <i class="fa-solid fa-trash-can"></i>
+                                /home/user/çöp-kutusu
+                            </span>
+                            <button class="action-button action-button--ghost" id="emptyTrashButton" type="button">
+                                <i class="fa-solid fa-broom"></i>
+                                Çöp Kutusunu Boşalt
+                            </button>
+                        </div>
+                        <div class="window-content trash-layout">
+                            <div class="trash-header">
+                                <p class="mini-label">Silinen Öğeler</p>
+                                <p>Buradaki içerikler temsili. Eski denemeler, taslaklar ve kullanılmayan fikirler burada duruyor.</p>
+                            </div>
+                            <div id="trashList" class="trash-list" aria-live="polite"></div>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="static/js/main.js?v=20260328-11"></script>
 </body>
 </html>
