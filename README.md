@@ -4,7 +4,7 @@ Bu proje, macOS / Linux masaüstü hissi taşıyan interaktif bir web portföy �
 
 ## 🚀 Projeyi Nereden Gördün?
 Bu şablonu ilk olarak LinkedIn'de paylaştım. Orijinal gönderiye buradan ulaşabilir ve destek olmak için beğenebilirsin:
-👉 [LinkedIn Gönderim İçin Tıklayın](#LINKEDIN_POST_LINKINIZI_BURAYA_EKLEYIN)
+👉 [LinkedIn Gönderim İçin Tıklayın](#https://www.linkedin.com/posts/ahmet-mert-kabak_portfolio-webdesign-frontend-activity-7443417557094711296-N8A0?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAELTy1YB2eK_pKzuicuJaxSccqhMDzoPj8U)
 
 ## 📥 Kurulum & Kullanım
 
